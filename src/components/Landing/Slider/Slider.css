@@ -1,0 +1,8 @@
+.Image-slider .swiper-button-next,
+.Image-slider .swiper-button-prev {
+    color: var(--white);
+}
+.Image-slider .swiper-pagination-bullet,
+.Image-slider .swiper-pagination-bullet-active {
+     background-color: var(--white);
+ }

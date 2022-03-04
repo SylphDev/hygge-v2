@@ -1,0 +1,28 @@
+.Navbar-container {
+    width: 50%;
+    min-width: 30rem;
+    max-width: 50rem;
+    height: inherit;
+}
+
+.Navbar-container .Navbar-list {
+    display: flex;
+    list-style: none;
+    text-align: center;
+    height: inherit;
+    align-items: center;
+}
+
+.Navbar-container .Navbar-list .Navbar-element {
+    width: 33%;
+    height: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.Navbar-container .Navbar-list .Navbar-element:hover {
+    background-color: var(--mid-dark-blue);
+    color: var(--white);
+}
