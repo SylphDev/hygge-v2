@@ -1,6 +1,7 @@
 import React from 'react'
 import './ServiceButtons.css'
 
+
 const ServiceButtons = ({ view }) => {
     return (
         <div className="ServiceButtons-container">

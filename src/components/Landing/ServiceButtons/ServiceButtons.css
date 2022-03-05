@@ -27,3 +27,21 @@
 .ServiceButtons-container button:hover {
     transform: scale(1.2);
 }
+
+@media (max-width:680px) {
+    .ServiceButtons-container .Google-button:hover {
+        background-color: #de4033;
+        color: var(--white);
+        transform: none;
+    }
+    .ServiceButtons-container .Twitter-button:hover {
+        background-color: #1c99e5;
+        color: var(--white);
+        transform: none;
+    }
+    .ServiceButtons-container .Facebook-button:hover {
+        background-color: #385495;
+        color: var(--white);
+        transform: none;
+    }
+}
