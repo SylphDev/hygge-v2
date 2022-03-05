@@ -1,0 +1,26 @@
+.Register-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 10.4rem);
+    width: 100%;
+    background-color: var(--dark-blue);
+}
+.Register-container .Register-form-container {
+    background-color: white;
+    padding: 3rem;
+    border-radius: 1rem;
+}
+.Register-container .Register-form-container .Register-info {
+    font-size: 2rem;
+}
+
+@media (max-width: 530px) {
+    .Register-container .Register-form-container {
+        width: 100%;
+    }
+    .Register-container .Register-form-container {
+        border-radius: 0;
+    }
+}

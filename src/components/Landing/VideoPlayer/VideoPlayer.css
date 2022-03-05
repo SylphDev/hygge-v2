@@ -42,7 +42,7 @@
     }
 }
 
-@media (min-width:800px) {
+@media (min-width:1000px) {
     .Video-player-logo {
         display: none;
     }

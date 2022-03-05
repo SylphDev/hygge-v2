@@ -13,16 +13,17 @@
     align-items: center;
 }
 
-.Navbar-container .Navbar-list .Navbar-element {
+.Navbar-container .Navbar-list a {
     width: 33%;
     height: inherit;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    text-decoration: none;
+    color: #075074;
 }
-
-.Navbar-container .Navbar-list .Navbar-element:hover {
+.Navbar-container .Navbar-list a:hover {
     background-color: var(--mid-dark-blue);
     color: var(--white);
 }
