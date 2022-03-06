@@ -4,13 +4,20 @@
     align-items: center;
     margin-top: 2rem;
 }
-.ServiceButtons-container button {
-    height: 6rem;
-    padding: 0 0.5rem;
-    width: 10rem;
+.ServiceButtons-container div {
+    padding: 1.5rem;
     border-radius: 1rem;
     background-color: white;
     transition: all 0.3s;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+.ServiceButtons-container div figure {
+    height: 5rem;
+}
+.ServiceButtons-container div figure img {
+    height: 100%;
 }
 .ServiceButtons-container .Google-button {
     border: 0.2rem solid #de4033;
@@ -24,24 +31,6 @@
     border: 0.2rem solid #385495;
     color: #385495;
 }
-.ServiceButtons-container button:hover {
+.ServiceButtons-container div:hover {
     transform: scale(1.2);
-}
-
-@media (max-width:680px) {
-    .ServiceButtons-container .Google-button:hover {
-        background-color: #de4033;
-        color: var(--white);
-        transform: none;
-    }
-    .ServiceButtons-container .Twitter-button:hover {
-        background-color: #1c99e5;
-        color: var(--white);
-        transform: none;
-    }
-    .ServiceButtons-container .Facebook-button:hover {
-        background-color: #385495;
-        color: var(--white);
-        transform: none;
-    }
 }

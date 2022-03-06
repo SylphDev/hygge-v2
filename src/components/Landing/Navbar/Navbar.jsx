@@ -1,9 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import userReducer from '../../../redux/reducer/userReducer';
 import './Navbar.css';
-import { initialState } from '../../../redux/state';
 import { setUserAction, setViewAction } from '../../../redux/actions/actions';
 
 const Navbar = () => {
