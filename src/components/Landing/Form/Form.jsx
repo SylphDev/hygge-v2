@@ -1,7 +1,16 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { setUserAction, setViewAction } from '../../../redux/actions/actions';
 import './Form.css'
 
 const Form = ({ view }) => {
+    const dispatch = useDispatch()
+    const enter = () => {
+        dispatch(setUserAction({ name: 'Alex' }))
+        dispatch(setViewAction('search'))
+    }
+
     return (
         <form className="Form-container">
             {view === 'register' ?
@@ -9,11 +18,11 @@ const Form = ({ view }) => {
                     <input type="text" className='input Name-input' placeholder='Nombre completo' />
                     <input type="text" className='input Country-input' placeholder='País' />
                     <input type="text" className='input City-input' placeholder='Ciudad' />
-                    <input type="tel" className='input Phone-input' placeholder='Telefóno' />
+                    <input type="number" className='input Phone-input' placeholder='Telefóno' />
                 </React.Fragment> : null}
             <input type="email" className='input Email-input' placeholder='Correo Electrónico' />
             <input type="password" className='input Password-input' placeholder='Contraseña' />
-            <button type='submit'>{view === 'register' ? 'Registrar' : 'Ingresar'}</button>
+            <Link to={'/search'}><button onClick={enter} type='button'>{view === 'register' ? 'Registrar' : 'Ingresar'}</button></Link>
         </form>
     )
 }

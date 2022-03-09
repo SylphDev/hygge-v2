@@ -15,6 +15,11 @@
 .Login-container .Login-form-container .Login-info {
     font-size: 2rem;
 }
+.Login-container .Login-form-container .Login-remember-password {
+    text-align: center;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
 
 @media (max-width: 530px) {
     .Login-container .Login-form-container {

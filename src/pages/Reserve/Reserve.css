@@ -1,0 +1,55 @@
+.Reserve-container {
+    margin-top: 3rem;
+}
+.Reserve-container .Reserve-hut-info {
+    display: flex;
+}
+.Reserve-container .Reserve-hut-info .Slider-hut {
+    width: 60%;
+}
+.Reserve-container .Reserve-hut-info .Hut-info {
+    width: 50%;
+    padding: 2rem;
+}
+.Reserve-container .Reserve-hut-info .Hut-info p {
+    margin-bottom: 2rem;
+}
+.Reserve-container .Reserve-hut-info .Hut-info p:last-child {
+    margin-bottom: 0;
+}
+.Reserve-container .Reserve-hut-info .Hut-info .Hut-info-name {
+    font-weight: bold;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+.Reserve-container .Reserve-info {
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--mid-dark-blue);
+    border-top: 2.5rem solid var(--mid-dark-blue);
+    border-bottom: 2.5rem solid var(--mid-dark-blue);
+}
+.Reserve-container .Reserve-info .Reserve-title {
+    font-size: 2.2rem;
+}
+
+@media (max-width: 1000px) {
+    .Reserve-container .Reserve-info {
+        border-left: none;
+        border-right: none;
+    }
+    .Reserve-container .Reserve-hut-info {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .Reserve-container .Reserve-hut-info .Slider-hut {
+        width: 100%;
+    }
+    .Reserve-container .Reserve-hut-info .Hut-info {
+        width: 80%;
+    }
+}

@@ -10,6 +10,7 @@ const Login = () => {
                 <p className='Login-info'>¡Ingresa a tu cuenta y encuentra nuevas aventuras!</p>
                 <ServiceButtons vier={'login'} />
                 <Form view={'login'} />
+                <p className='Login-remember-password'>Olvidaste tu contraseña? Has click aquí</p>
             </div>
         </div>
     )

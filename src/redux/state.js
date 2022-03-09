@@ -1,6 +1,6 @@
 const initialState = {
     user: {
-        name: 'Alex',
+        name: null,
         email: null,
         password: null,
         country: null,
@@ -10,6 +10,7 @@ const initialState = {
     },
     view: 'landing',
     citys: [],
+    huts: ['jamon']
 }
 
 export { initialState };

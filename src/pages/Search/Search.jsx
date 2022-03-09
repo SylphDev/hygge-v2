@@ -1,13 +1,13 @@
 import React from 'react'
-import { useDispatch } from 'react-redux';
-import { setViewAction } from '../../redux/actions/actions';
+import { Link } from 'react-router-dom';
+import './Search.css'
 
 const Search = () => {
-    const dispatch = useDispatch();
-    dispatch(setViewAction('search'))
-
     return (
-        <div>Search</div>
+        <div className="Search-container">
+            <p>Aqui va la pagina de busqueda</p>
+            <Link to={'/reserve'}><button>VIVE EN UNA PINA DEBAJO DEL MAAAAAAAR</button></Link>
+        </div>
     )
 }
 

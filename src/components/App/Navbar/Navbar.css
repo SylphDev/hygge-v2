@@ -28,3 +28,30 @@
     background-color: var(--mid-dark-blue);
     color: var(--white);
 }
+
+@media (max-width:599px) {
+    .Navbar-container {
+        min-width: 0;
+        width: 40%;
+        background-color: var(--white);
+        position: fixed;
+        top: 8rem;
+        right: 0rem;
+        height: auto;
+        z-index: 99;
+        font-size: 2rem;
+    }
+    .Navbar-container .Navbar-list {
+        flex-direction: column;
+        height: auto;
+    }
+    .Navbar-container .Navbar-list a {
+        width: 100%;
+    }
+    .Navbar-container .Navbar-list a li {
+        height: 5rem;
+        align-self: center;
+        display: flex;
+        align-items: center;
+    }
+}
