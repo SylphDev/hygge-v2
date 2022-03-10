@@ -5,9 +5,7 @@ import './Navbar.css';
 import { setUserAction, setViewAction } from '../../../redux/actions/actions';
 
 const Navbar = () => {
-  const view = useSelector(state => state.view)
   const user = useSelector(state => state.user)
-  const huts = useSelector(state => state.huts)
   const dispatch = useDispatch()
   const logOut = () => {
     dispatch(setUserAction({

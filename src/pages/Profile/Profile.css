@@ -1,7 +1,6 @@
 .Profile-container {
     margin-top: 3rem;
     text-align: center;
-    height: calc(100vh - 124px);
 }
 .Profile-container .Profile-info {
     display: flex;

@@ -15,9 +15,14 @@ const Form = ({ view }) => {
         <form className="Form-container">
             {view === 'register' ?
                 <React.Fragment>
-                    <input type="text" className='input Name-input' placeholder='Nombre completo' />
-                    <input type="text" className='input Country-input' placeholder='País' />
-                    <input type="text" className='input City-input' placeholder='Ciudad' />
+                    <div className="Form-container-name double-input">
+                        <input type="text" className='input Name-input' placeholder='Nombre' />
+                        <input type="text" className='input Name-input' placeholder='Apellido' />
+                    </div>
+                    <div className="Form-container-country double-input">
+                        <input type="text" className='input Country-input' placeholder='País' />
+                        <input type="text" className='input City-input' placeholder='Ciudad' />
+                    </div>
                     <input type="number" className='input Phone-input' placeholder='Telefóno' />
                 </React.Fragment> : null}
             <input type="email" className='input Email-input' placeholder='Correo Electrónico' />

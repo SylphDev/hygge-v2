@@ -15,8 +15,10 @@ const Profile = () => {
                 </figure>
             </div>
             <form className='Profile-form'>
-                <label htmlFor="name">Nombre Completo</label>
+                <label htmlFor="name">Nombre</label>
                 <input type="text" id='name' className='input Name-input' placeholder={`${user.name}`} />
+                <label htmlFor="name">Apellido</label>
+                <input type="text" id='lastName' className='input Name-input' placeholder={`${user.lastName}`} />
                 <label htmlFor="country">País</label>
                 <input type="text" id='country' className='input Country-input' placeholder={`${user.country}`} />
                 <label htmlFor="city">Ciudad</label>
