@@ -1,0 +1,37 @@
+.ServiceButtons-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 2rem;
+}
+.ServiceButtons-container div {
+    padding: 1.5rem;
+    border-radius: 1rem;
+    background-color: white;
+    transition: all 0.3s;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+.ServiceButtons-container div figure {
+    height: 5rem;
+}
+.ServiceButtons-container div figure img {
+    height: 100%;
+}
+.ServiceButtons-container .Google-button {
+    border: 0.2rem solid #de4033;
+    color: #de4033;
+}
+.ServiceButtons-container .Twitter-button {
+    border: 0.2rem solid #1c99e5;
+    color: #1c99e5;
+}
+.ServiceButtons-container .Facebook-button {
+    border: 0.2rem solid #385495;
+    color: #385495;
+}
+.ServiceButtons-container div:hover {
+    transform: scale(1.2);
+}

@@ -1,0 +1,50 @@
+.Login-container {
+    height: calc(100vh - 10.4rem);
+    width: 100%;
+    background-color: var(--dark-blue);
+    display: flex;
+    justify-content: end;
+}
+.Login-container .Image-container {
+    width: 100%;
+    height: 100%;
+    border: 0.5rem solid var(--dark-blue);
+    border-right: none;
+}
+.Login-container .Image-container img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.Login-container .Login-form-container {
+    background-color: var(--white);
+    padding: 3rem;
+    border: 0.5rem solid var(--dark-blue);
+    border-left: none;
+}
+.Login-container .Login-form-container .Login-info {
+    font-size: 2rem;
+}
+.Login-container .Login-form-container .Login-remember-password {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+@media (max-width: 530px) {
+    .Login-container .Login-form-container {
+        width: 100%;
+    }
+    .Login-container .Login-form-container {
+        border-radius: 0;
+    }
+}
+@media (max-width:800px) {
+    .Login-container .Image-container {
+        display: none;
+    }
+    .Login-container {
+        justify-content: center;
+    }
+}

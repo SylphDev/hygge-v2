@@ -6,3 +6,6 @@
 .Image-slider .swiper-pagination-bullet-active {
      background-color: var(--white);
  }
+ .swiper {
+     height: inherit;
+ }

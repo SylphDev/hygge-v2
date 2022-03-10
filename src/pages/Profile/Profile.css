@@ -1,0 +1,71 @@
+.Profile-container {
+    margin-top: 3rem;
+    text-align: center;
+}
+.Profile-container .Profile-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+}
+.Profile-container .Profile-picture {
+    width: 10rem;
+    height: 10rem;
+    align-self: center;
+    border-radius: 50%;
+}
+.Profile-container .Profile-picture img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: fill;
+}
+.Profile-container p {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+}
+.Profile-container .Profile-form {
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    width: 70%;
+    margin: 0 auto;
+}
+.Profile-container .Profile-form label {
+    margin-bottom: 0.5rem;
+}
+.Profile-container .Profile-form .input {
+    margin-bottom: 1rem;
+    font-size: 1.6rem;
+    height: 3rem;
+    border-radius: 1rem;
+    padding-left: 1rem;
+    border: 0.1rem solid var(--mid-dark-blue);
+}
+.Profile-container .Profile-form .input:last-child {
+    margin-bottom: 3rem;
+}
+.Profile-container button {
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    border: 0.1rem solid var(--mid-dark-blue);
+    background-color: var(--white);
+    font-size: 1.8rem;
+    color: var(--mid-dark-blue);
+    cursor: pointer;
+}
+.Profile-container button:hover {
+    background-color: var(--white);
+    color: var(--mid-dark-blue);
+}
+.Profile-container .Profile-info p {
+    margin-bottom: 0;
+}
+@media (max-width:599px) {
+    .Profile-container .Profile-picture {
+        width: 8rem;
+        height: 8rem;
+    }
+}

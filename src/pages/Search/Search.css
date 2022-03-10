@@ -1,0 +1,21 @@
+.Search-container {
+    text-align: center;
+    margin-top: 2rem;
+    height: calc(100vh - 11rem);
+}
+.Search-container p {
+    font-size: 2rem;
+}
+.Search-container button {
+    margin-top: 2rem;
+    padding: 2rem 4rem;
+    background-color: var(--white);
+    border: 0.5rem solid var(--dark-blue);
+    border-radius: 1rem;
+    font-size: 2rem;
+    color: var(--dark-blue);
+}
+.Search-container button:hover {
+    background-color: var(--dark-blue);
+    color: var(--white);
+}

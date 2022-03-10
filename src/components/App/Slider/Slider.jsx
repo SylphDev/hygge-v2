@@ -12,7 +12,7 @@ import 'swiper/css/pagination';
 
 SwiperCore.use([Autoplay]);
 
-const Slider = () => {
+const Slider = ({ images = [beach, forest, mountains, lakeHouse] }) => {
     return (
         <div className="Image-slider">
             <Swiper
@@ -28,18 +28,16 @@ const Slider = () => {
                     disableOnInteraction: false
                 }}
             >
-                <SwiperSlide>
-                    <img src={beach} style={{ width: '100%', height: '35rem', objectFit: "cover" }} />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img src={forest} style={{ width: '100%', height: '35rem', objectFit: "cover" }} />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img src={mountains} style={{ width: '100%', height: '35rem', objectFit: "cover" }} />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img src={lakeHouse} style={{ width: '100%', height: '35rem', objectFit: "cover" }} />
-                </SwiperSlide>
+                {images.map(image => {
+                    console.log('>>SLIDER', image);
+                    return (
+                        <React.Fragment key={image}>
+                            <SwiperSlide key={image}>
+                                <img src={`${image}`} style={{ width: '100%', height: '35rem', objectFit: "cover" }} />
+                            </SwiperSlide>
+                        </React.Fragment>
+                    )
+                })}
             </Swiper>
         </div>
     );
