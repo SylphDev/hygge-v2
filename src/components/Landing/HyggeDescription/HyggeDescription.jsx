@@ -1,5 +1,4 @@
 import React from "react";
-import houseIcon from "../../../assets/logos/House-icon.png";
 import hutIcon from "../../../assets/logos/Hut-icon.png";
 import starIcon from "../../../assets/logos/Star-icon.png";
 import phoneIcon from "../../../assets/logos/Phone-icon.png";
