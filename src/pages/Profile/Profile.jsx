@@ -11,7 +11,7 @@ const Profile = () => {
       <div className="Profile-info">
         <p>Tu perfil</p>
         <figure className="Profile-picture">
-          <img src={greyImage} alt="Profile Picture" />
+          <img src={greyImage} alt="Profile" />
         </figure>
       </div>
       <form className="Profile-form">

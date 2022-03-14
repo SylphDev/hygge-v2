@@ -8,7 +8,7 @@ const Login = () => {
   return (
     <div className="Login-container">
       <figure className="Image-container">
-        <img src={riverImage} alt="River image" />
+        <img src={riverImage} alt="River" />
       </figure>
       <div className="Login-form-container">
         <p className="Login-info">

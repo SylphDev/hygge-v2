@@ -8,7 +8,7 @@ const Register = () => {
   return (
     <div className="Register-container">
       <figure className="Image-container">
-        <img src={sunsetImage} alt="River image" />
+        <img src={sunsetImage} alt="River" />
       </figure>
       <div className="Register-form-container">
         <p className="Register-info">
