@@ -1,0 +1,35 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.8rem;
+    height: 6rem;
+    padding-left: 2rem;
+    margin: 1rem 0;
+}
+header .Logo-icon {
+    height: inherit;
+}
+header .Logo-icon img {
+    height: inherit;
+}
+header .Menu-icon {
+    width: 5rem;
+}
+header .Menu-icon img {
+    width: inherit;
+}
+
+@media (max-width:599px) {
+    .Navbar-container {
+        display: none;
+    }
+    header {
+        padding-right: 2rem;
+    }
+}
+@media (min-width:600px) {
+   .Menu-icon {
+       display: none;
+   }
+}

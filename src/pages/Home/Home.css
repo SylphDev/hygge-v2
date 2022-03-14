@@ -1,0 +1,7 @@
+.Image-slider {
+    height: 35rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--white);
+}

@@ -1,0 +1,36 @@
+.About-us {
+    width: 100%;
+    margin: 1rem 0.5rem;
+    padding: 1.5rem 2rem;
+    font-size: 1.4rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 0.5rem;
+    transition: all .3s ease;
+}
+.About-us .Logo-unimet {
+    height: 15rem;
+}
+.About-us .Logo-unimet img {
+    height: 15rem;
+}
+.About-us .About-us-info {
+    width: 55%;
+    height: 15rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+@media (min-width:680px) {
+    .About-us {
+        width: 48%;
+        order: 2;
+    }
+    .About-us:hover {
+        transform: scale(1.3);
+        background-color: var(--white);
+        z-index: 2;
+    }
+}
