@@ -17,7 +17,7 @@
     object-fit: cover;
 }
 .Register-container .Register-form-container {
-    background-color: white;
+    background-color: var(--white);
     padding: 3rem;
     border: 0.5rem solid var(--dark-blue);
     border-left: none;
@@ -29,11 +29,18 @@
 @media (max-width: 530px) {
     .Register-container .Register-form-container {
         width: 100%;
-    }
-    .Register-container .Register-form-container {
         border-radius: 0;
+        border-right: 0;
     }
     .Register-container .Register-form-container .Register-info {
         font-size: 1.7rem;
+    }
+}
+@media (max-width:800px) {
+    .Register-container .Image-container {
+        display: none;
+    }
+    .Register-container {
+        justify-content: center;
     }
 }

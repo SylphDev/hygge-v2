@@ -35,9 +35,8 @@
 @media (max-width: 530px) {
     .Login-container .Login-form-container {
         width: 100%;
-    }
-    .Login-container .Login-form-container {
         border-radius: 0;
+        border-right: 0;
     }
 }
 @media (max-width:800px) {
