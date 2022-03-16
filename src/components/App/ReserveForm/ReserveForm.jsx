@@ -36,7 +36,7 @@ const ReserveForm = () => {
         <figure className="Logo-small">
           <img src={smallLogo} alt="Logo" />
         </figure>
-        <button>Reservar</button>
+        <button type="button">Reservar</button>
       </div>
     </div>
   );
