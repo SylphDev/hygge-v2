@@ -14,7 +14,15 @@ const initialState = {
   },
   view: "landing",
   citys: [],
-  huts: [{ name: 'Fondo de bikini', description: '', photo: [], rooms: [], city: '' }],
+  huts: [
+    {
+      name: "Fondo de bikini",
+      description: "",
+      photo: [],
+      rooms: [],
+      city: "",
+    },
+  ],
 };
 
 export { initialState };

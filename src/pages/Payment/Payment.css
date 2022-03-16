@@ -12,6 +12,7 @@
 }
 .Payment-container .Payment-logo img {
     height: 80%;
+    margin-right: 6%;
 }
 .Payment-container .Payment-reserve-info {
     min-width: 36rem;

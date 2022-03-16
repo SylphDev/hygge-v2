@@ -2,17 +2,18 @@
     width: 85%;
     background-color: var(--white);
     padding: 2rem;
-    display: flex;
-    justify-content: space-evenly;
 }
 label {
     margin-right: 2rem;
 }
 .ReserveForm-container .Reserve-title {
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
 }
 .ReserveForm-container .ReserveForm-form{
+    display: flex;
     text-align: center;
+    justify-content: space-evenly;
+    align-items: center;
 }
 .ReserveForm-container .ReserveForm-form input {
     width: 20rem;
