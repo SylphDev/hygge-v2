@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import HotelCard from "../../components/Search/HotelCard/HotelCard";
 import "./Search.css";
 import { db } from "../../firebase/firebaseConfig";
 import { SearchBar } from "../../components/App/SearchBar/SearchBar";
+import styles from "../../components/Search/HotelCard/HotelCard.module.css";
+import CityCard from "../../components/Search/CityDetails/CityDetails";
+
+
 
 const Search = () => {
 
@@ -94,16 +99,17 @@ const Search = () => {
       searchValue={searchValue}
       setSearchValue={setSearchValue}
       />
-      <div className="huts-container">
+      <div className="Posadas">
         {searchedHuts.map(hut =>
-        <React.Fragment>
-          <div className={hut.name} onClick={handleClick}>
-          <img src={hut.photos[0]} alt="fotico" />
-          <h1>{hut.name}</h1>
-          <p>{hut.about}</p>
-          <p>Estrellitas de rating</p>
-          </div> 
-          </React.Fragment>
+        <HotelCard nombre={hut.name} ciudad={hut.city} urlimagen={hut.photos[0]} popularidad={" 8.3"} eventHandler={handleClick} />
+        // <React.Fragment>
+        //   <div className={hut.name} onClick={handleClick}>
+        //   <img src={hut.photos[0]} alt="fotico" />
+        //   <h1>{hut.name}</h1>
+        //   <p>{hut.about}</p>
+        //   <p>Estrellitas de rating</p>
+        //   </div> 
+        //   </React.Fragment>
           )}
       </div>
       {/* {cityDetail.length > 0 ? 
@@ -114,6 +120,21 @@ const Search = () => {
           <p>{cityDetail[0].about}</p>
       </div>
 : <React.Fragment></React.Fragment>} */}
+      
+      
+      {/* <div >
+        
+
+        <div className="Posadas">
+  
+        <HotelCard nombre={"Posada linda"} ciudad={" Punto fijo"} urlimagen={"https://hotelesenmargarita.com/images/Posada-Guaicora/Posada-Guaicora-2.jpg"} popularidad={" 8.3"}  />
+        </div>
+
+        <div className="Ciudades">
+        <CityCard nombre={"Caracas"} descripcion={" Caracas es la ciudad capital de la República Bolivariana de Venezuela, centro de la administración pública central, núcleo financiero, comercial y cultural más importante de la nación. Se encuentra ubicada en la zona centro-norte del país, a unos 15 Km. del Mar Caribe y se sitúa dentro de un valle en el sistema de la Cordillera de la Costa a una altitud promedio de 900 metros sobre el nivel del mar"} urlimagen={"https://ichef.bbci.co.uk/news/640/cpsprodpb/D159/production/_97039535_caracas.jpg"} ></CityCard>
+        </div>
+
+      </div> */}
     </div>
   );
 };
