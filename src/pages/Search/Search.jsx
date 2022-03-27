@@ -25,7 +25,7 @@ const Search = () => {
       const citiesArray = [];
       data.docs.forEach((element) => {
         const city = {...element.data()};
-        citiesArray.push(city.name);
+        citiesArray.push(city);
       }) 
       setCities(citiesArray);
     })
@@ -56,6 +56,7 @@ const Search = () => {
 
   const handleChange = (event) => {   
     setInitCity(event.target.value);
+    setCityDetail(cities.filter(city => city.name === event.target.value));
   }
 
   const handleClick = (event) => {
@@ -81,60 +82,32 @@ const Search = () => {
     fetchHuts();
   }, [initCity]);
 
-  // if(initCity != ""){
-  // setCityDetail(cities.filter(city => city.name === initCity));
-  // }
-
   return (
     <div className="Search-container">
       <div className="cities-container">
       {cities.map(city =>
       <React.Fragment>
-        <input type="radio" name="city" value={city} onChange={handleChange}/>
-        <label htmlFor={city}>{city}</label> 
+        <input type="radio" name="city" value={city.name} onChange={handleChange}/>
+        <label htmlFor={city.name}>{city.name}</label> 
         </React.Fragment>
       )}
       </div>
+      
+      <div className="Posadas">
       <SearchBar 
       searchValue={searchValue}
       setSearchValue={setSearchValue}
       />
-      <div className="Posadas">
         {searchedHuts.map(hut =>
         <HotelCard nombre={hut.name} ciudad={hut.city} urlimagen={hut.photos[0]} popularidad={" 8.3"} eventHandler={handleClick} />
-        // <React.Fragment>
-        //   <div className={hut.name} onClick={handleClick}>
-        //   <img src={hut.photos[0]} alt="fotico" />
-        //   <h1>{hut.name}</h1>
-        //   <p>{hut.about}</p>
-        //   <p>Estrellitas de rating</p>
-        //   </div> 
-        //   </React.Fragment>
           )}
       </div>
-      {/* {cityDetail.length > 0 ? 
-      <div className="city-detail">
-
-          <img src={cityDetail[0].photos[0]} alt="fotico" />
-          <h1>{cityDetail[0].name}</h1>
-          <p>{cityDetail[0].about}</p>
+      {initCity != "" ? 
+      <div className="Ciudades">
+        <CityCard 
+        nombre={cityDetail[0].name} descripcion={cityDetail[0].about} urlimagen={cityDetail[0].photos[0]} ></CityCard>
       </div>
-: <React.Fragment></React.Fragment>} */}
-      
-      
-      {/* <div >
-        
-
-        <div className="Posadas">
-  
-        <HotelCard nombre={"Posada linda"} ciudad={" Punto fijo"} urlimagen={"https://hotelesenmargarita.com/images/Posada-Guaicora/Posada-Guaicora-2.jpg"} popularidad={" 8.3"}  />
-        </div>
-
-        <div className="Ciudades">
-        <CityCard nombre={"Caracas"} descripcion={" Caracas es la ciudad capital de la República Bolivariana de Venezuela, centro de la administración pública central, núcleo financiero, comercial y cultural más importante de la nación. Se encuentra ubicada en la zona centro-norte del país, a unos 15 Km. del Mar Caribe y se sitúa dentro de un valle en el sistema de la Cordillera de la Costa a una altitud promedio de 900 metros sobre el nivel del mar"} urlimagen={"https://ichef.bbci.co.uk/news/640/cpsprodpb/D159/production/_97039535_caracas.jpg"} ></CityCard>
-        </div>
-
-      </div> */}
+: <React.Fragment></React.Fragment>}
     </div>
   );
 };
