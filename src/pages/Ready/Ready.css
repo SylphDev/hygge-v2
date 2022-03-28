@@ -1,0 +1,104 @@
+.Ready-container {
+    justify-content: end;
+    height: calc(100vh - 10.4rem);
+    width: 100%;
+}
+
+.Ready-container .Content{
+    display: flex;
+}
+
+.Image-content{
+    padding: 0rem;
+}
+.Ready-container .Image-container {
+    width: 30rem;
+    height: 30rem;
+    border-right: none;
+}
+
+.Ready-container .Image-container img{
+    height: 30rem;
+    width: 30rem;
+    object-fit: cover;
+}
+
+.Ready-text {
+    width: 100%;
+    color: var(--mid-dark-blue);
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 30rem;
+    padding: 0 2.5rem;
+    font-size: 3rem;
+}
+
+.Button-container{
+    display: flex;
+    justify-content: center;
+}
+
+.Button-container button {
+    width: 100%;
+    margin-top: 1rem;
+    height: 5rem;
+    width: 15rem;
+    font-size: 1.8rem;
+    border-radius: 1rem;
+    border: 0.1rem solid var(--mid-dark-blue);
+    background-color: white;
+    color: var(--mid-dark-blue);
+    cursor: pointer;
+}
+
+.Button-container button:hover {
+    background-color: var(--mid-dark-blue);
+    color: var(--white);
+}
+
+@media (max-width: 530px) {
+    .Ready-container .Content {
+        width: 100%;
+        border-radius: 0;
+        border-right: 0;
+    }
+
+    .Ready-text{
+        position:absolute;
+        display:block;
+        margin-top: 28rem;
+        text-align: center;
+    }
+    .Ready-container .Image-container {
+        position:relative;
+        display:block;
+        margin: 2rem;
+        float:left;
+        width:50%;
+    }
+
+    .Button-container{
+        text-align: center;   
+        width: 100%;  
+        height: 100%;  
+        padding-top: 5rem; 
+    }
+
+    .Ready-container .Image-container img{
+        height: 25rem;
+        width: 25rem;
+    }
+
+}
+@media (max-width:800px) {
+    .Ready-container .Content {
+        display: flex;
+    }
+    .Ready-container .Content {
+        justify-content: center;
+    }
+}
+
+

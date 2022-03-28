@@ -9,15 +9,21 @@
     height: 40rem;
     padding: 0 2.5rem;
 }
+
+.Hygge-description .title{
+    font-size: 3rem;
+}
+
 .Hygge-description .Hygge-description-element {
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    font-size: 1.7rem;
 }
 .Hygge-description .Hygge-description-element .Icon {
     width: 5rem;
     height: 5rem;
-    margin-right: 4rem;
+    margin-right: 2rem;
 }
 .Hygge-description .Hygge-description-element .Icon img {
     width: 5rem;
