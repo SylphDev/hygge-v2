@@ -1,6 +1,6 @@
 import React from "react";
 import forestVideo from "../../../assets/videos/Forest.mp4";
-import smallLogo from "../../../assets/logos/logo-small-white.png";
+import smallLogo from "../../../assets/logos/logo-small-black.png";
 import "./VideoPlayer.css";
 
 const VideoPlayer = () => {

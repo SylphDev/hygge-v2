@@ -7,18 +7,19 @@
     flex-direction: column;
     justify-content:space-evenly;
     text-align: center;
-    background-color: var(--dark-green);
-    color: var(--white);
+    color: var(--mid-dark-blue);
 }
 .Video-player p {
     align-self: center;
     font-size: 2rem;
     font-weight: bold;
     max-width: 35rem;
+    
 }
 .Video-player-logo {
     width: 70%;
     align-self: center;
+    
 }
 .Video-player-logo img {
     width: 70%;
@@ -36,6 +37,7 @@
         max-width: 500px;
         width: 50%;
         order: 4;
+        
     }
     .Video-player .Home-video {
         display: none;
