@@ -14,8 +14,14 @@ const Reserve = () => {
       "hermosa y pequeña posada con vista al océano. Vecinos muy amigables, aunque disfrutan de tocar clarinete a las 7:00am, Muy cerca del campo de medusas de la localidad",
     benefits:
       "arquitectura vanguardista inspirada en frutas tropicales. Amplio espacio con varios cuartos y baños. Se aceptan caracoles de mascota",
-    rooms:
-      "apartamento de 4 cuartos y 3 baños. Cocina último modelo y mucha agua",
+    rooms:[{
+      name: "Hola",
+      price: 35
+    },
+    {
+      name: "Chao",
+      price: 37
+    }],
     location: "Océano aventurero",
   };
   return (
@@ -36,7 +42,9 @@ const Reserve = () => {
           </p>
           <p className="Hut-info-rooms">
             <b>Tipos de habitación: </b>
-            {hut.rooms}
+            {hut.rooms.map(room => 
+              <b>{room.name}</b>
+              )}
           </p>
           <p className="Hut-info-location">
             <b>Tipo de locación: </b>
