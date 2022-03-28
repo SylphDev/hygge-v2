@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import HotelCard from "../../components/Search/HotelCard/HotelCard";
 import "./Search.css";
 import { db } from "../../firebase/firebaseConfig";
 import { SearchBar } from "../../components/App/SearchBar/SearchBar";
-import styles from "../../components/Search/HotelCard/HotelCard.module.css";
 import CityCard from "../../components/Search/CityDetails/CityDetails";
 
 
@@ -21,40 +19,40 @@ const Search = () => {
   const fetchCities = () => {
     const cities = db.collection("cities");
     cities.get()
-    .then((data) => {
-      const citiesArray = [];
-      data.docs.forEach((element) => {
-        const city = {...element.data()};
-        citiesArray.push(city);
-      }) 
-      setCities(citiesArray);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+      .then((data) => {
+        const citiesArray = [];
+        data.docs.forEach((element) => {
+          const city = { ...element.data() };
+          citiesArray.push(city);
+        })
+        setCities(citiesArray);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   const fetchHuts = () => {
     const huts = db.collection("huts");
     huts.get()
-    .then((data) => {
-      const hutsArray = [];
-      data.docs.forEach((element) => {
-        const hut = {...element.data()};
-        hutsArray.push(hut);
+      .then((data) => {
+        const hutsArray = [];
+        data.docs.forEach((element) => {
+          const hut = { ...element.data() };
+          hutsArray.push(hut);
+        })
+        if (initCity !== "") {
+          let newHuts = [];
+          newHuts = hutsArray.filter(hut => hut.city === initCity);
+          setHuts(newHuts);
+        }
       })
-      if(initCity != ""){ 
-        let newHuts = [];
-        newHuts = hutsArray.filter(hut => hut.city === initCity);
-        setHuts(newHuts);
-      }
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
-  const handleChange = (event) => {   
+  const handleChange = (event) => {
     setInitCity(event.target.value);
     setCityDetail(cities.filter(city => city.name === event.target.value));
   }
@@ -63,51 +61,55 @@ const Search = () => {
     setHut(event.target.className);
   }
 
-      //Dinamic search functionality
-      let searchedHuts = [];
+  //Dinamic search functionality
+  let searchedHuts = [];
 
-      if(!searchValue.length >= 1){
-          searchedHuts = huts;
-      } else{
-          searchedHuts = huts.filter(hut => {
-          const hutName = hut.name.toLowerCase();
-          const searchText = searchValue.toLowerCase();
-          
-          return hutName.includes(searchText);
-      });
-      }
+  if (!searchValue.length >= 1) {
+    searchedHuts = huts;
+  } else {
+    searchedHuts = huts.filter(hut => {
+      const hutName = hut.name.toLowerCase();
+      const searchText = searchValue.toLowerCase();
+
+      return hutName.includes(searchText);
+    });
+  }
 
   useEffect(() => {
     fetchCities();
     fetchHuts();
   }, [initCity]);
 
+  console.log(cityDetail);
   return (
     <div className="Search-container">
       <div className="cities-container">
-      {cities.map(city =>
-      <React.Fragment>
-        <input type="radio" name="city" value={city.name} onChange={handleChange}/>
-        <label htmlFor={city.name}>{city.name}</label> 
-        </React.Fragment>
-      )}
+        {cities.map(city =>
+          <div className="cities-container-filters" key={city.name}>
+            <input type="radio" name="city" value={city.name} onChange={handleChange} />
+            <label htmlFor={city.name}>{city.name}</label>
+          </div>
+        )}
       </div>
-      
-      <div className="Posadas">
-      <SearchBar 
-      searchValue={searchValue}
-      setSearchValue={setSearchValue}
-      />
-        {searchedHuts.map(hut =>
-        <HotelCard nombre={hut.name} ciudad={hut.city} urlimagen={hut.photos[0]} popularidad={" 8.3"} eventHandler={handleClick} />
+
+      {initCity !== "" ?
+        <div className="Posadas">
+          <SearchBar
+            searchValue={searchValue}
+            setSearchValue={setSearchValue}
+          />
+          {searchedHuts.map(hut =>
+            <HotelCard key={hut.name} hut={hut} nombre={hut.name} ciudad={hut.city} urlimagen={hut.photos[0]} popularidad={" 8.3"} eventHandler={handleClick} />
           )}
-      </div>
-      {initCity != "" ? 
-      <div className="Ciudades">
-        <CityCard 
-        nombre={cityDetail[0].name} descripcion={cityDetail[0].about} urlimagen={cityDetail[0].photos[0]} ></CityCard>
-      </div>
-: <React.Fragment></React.Fragment>}
+        </div>
+        : null}
+
+      {initCity !== "" ?
+        <div className="Ciudades">
+          <CityCard key={cityDetail[0].name}
+            nombre={cityDetail[0].name} descripcion={cityDetail[0].about} urlimagen={cityDetail[0].photos[0]} ></CityCard>
+        </div>
+        : null}
     </div>
   );
 };
