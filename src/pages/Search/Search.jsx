@@ -11,7 +11,7 @@ const Search = () => {
   const [initCity, setInitCity] = useState("");
   const [hut, setHut] = useState("");
   const [cityDetail, setCityDetail] = useState([]);
-  const [searchValue, setSearchValue] = React.useState('');
+  const [searchValue, setSearchValue] = useState('');
 
   const fetchCities = () => {
     const cities = db.collection("cities");
