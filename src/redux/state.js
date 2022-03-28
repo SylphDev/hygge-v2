@@ -3,7 +3,6 @@ const initialState = {
     name: null,
     lastName: null,
     email: null,
-    password: null,
     country: null,
     city: null,
     photoUrl: null,
@@ -15,7 +14,15 @@ const initialState = {
   },
   view: "landing",
   citys: [],
-  huts: [],
+  huts: [
+    {
+      name: "Fondo de bikini",
+      description: "",
+      photo: [],
+      rooms: [],
+      city: "",
+    },
+  ],
 };
 
 export { initialState };
