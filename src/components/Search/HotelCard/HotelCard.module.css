@@ -16,6 +16,8 @@
   margin: 30px;
 
   box-shadow: 0 0 10px 1px #b7b7a4;
+  border-radius: 10px;
+  
 }
 
 .todo {

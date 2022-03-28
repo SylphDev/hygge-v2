@@ -1,0 +1,13 @@
+input{
+    box-shadow: 10px 5px 60px rgba(32, 35, 41, 0.25);
+    border-radius: 6px;
+    border: 1px solid rgb(209, 205, 205);
+    text-align: center;
+    background-color: white;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1rem;
+    width: calc(100% - 120px);
+    height: 3rem;
+}
