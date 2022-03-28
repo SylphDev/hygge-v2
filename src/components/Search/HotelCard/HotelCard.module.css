@@ -1,0 +1,64 @@
+.body {
+  font-size: 1.6rem;
+  background-color: var(--white);
+  color: var(--mid-dark-blue);
+  font-family: "Ubuntu", sans-serif;
+}
+.Media {
+  color: #001219;
+
+  background-color: rgb(255, 255, 255);
+  width: 40rem;
+
+  margin-top: 60px;
+  padding: 40px;
+
+  margin: 30px;
+
+  box-shadow: 0 0 10px 1px #b7b7a4;
+  border-radius: 10px;
+  
+}
+
+.todo {
+  display: flex;
+  justify-content: center;
+}
+
+.Image {
+  width: 100%;
+
+  text-align: center;
+}
+
+.Nombre {
+  font-size: 3rem;
+  text-align: center;
+
+  background-color: var(--white);
+  color: var(--mid-dark-blue);
+  font-family: "Ubuntu", sans-serif;
+}
+
+.Ciudad {
+  font-size: 2rem;
+  text-align: center;
+
+  background-color: var(--white);
+  color: var(--mid-dark-blue);
+  font-family: "Ubuntu", sans-serif;
+}
+
+.Button {
+  align-items: center;
+}
+
+.Buttong {
+  margin: 0;
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  font-size: large;
+  padding-left: 25em;
+  padding-bottom: 2em;
+}
