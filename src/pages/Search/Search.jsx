@@ -5,10 +5,7 @@ import { db } from "../../firebase/firebaseConfig";
 import { SearchBar } from "../../components/App/SearchBar/SearchBar";
 import CityCard from "../../components/Search/CityDetails/CityDetails";
 
-
-
 const Search = () => {
-
   const [cities, setCities] = useState([]);
   const [huts, setHuts] = useState([]);
   const [initCity, setInitCity] = useState("");
@@ -80,7 +77,6 @@ const Search = () => {
     fetchHuts();
   }, [initCity]);
 
-  console.log(cityDetail);
   return (
     <div className="Search-container">
       <div className="cities-container">
