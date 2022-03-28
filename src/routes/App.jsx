@@ -9,6 +9,7 @@ import { Profile } from "../pages/Profile/Profile";
 import { Register } from "../pages/Register/Register";
 import { Reserve } from "../pages/Reserve/Reserve";
 import { Search } from "../pages/Search/Search";
+import { Ready } from "../pages/Ready/Ready";
 import { store } from "../redux/store";
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
             <Route path={"/profile"} element={<Profile />} />
             <Route path={"/search/:hutName"} element={<Reserve />} />
             <Route path={"/payment"} element={<Payment />} />
+            <Route path={"/payment/success"} element={<Ready />} />
           </Routes>
         </LandingLayout>
       </Provider>

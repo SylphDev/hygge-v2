@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import smallLogo from "../../../assets/logos/logo-small-black.png";
+import { setReserveAction } from "../../../redux/actions/actions";
 import "./ReserveForm.css";
 
 const ReserveForm = ({ hut }) => {
+  const dispatch = useDispatch()
   const [entryDate, setEntryDate] = useState('');
   const [leaveDate, setLeaveDate] = useState('');
   const [totalPrice, setTotalPrice] = useState("0.00");
+  const [room, setRoom] = useState("");
 
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
@@ -15,17 +20,18 @@ const ReserveForm = ({ hut }) => {
 
   const getLeaveDate = (event) => {
     const date = event.target.value;
-    setLeaveDate(Date.parse(date));
+    setLeaveDate(date);
   }
 
   const getEntryDate = (event) => {
     const date = event.target.value;
-    setEntryDate(Date.parse(date));
+    setEntryDate(date);
   }
 
   const calculateTotalPrice = (event) => {
-    const diffInMs = Math.abs(leaveDate - entryDate);
+    const diffInMs = Math.abs(Date.parse(leaveDate) - Date.parse(entryDate));
     const chosenRoom = event.target.value;
+    setRoom(chosenRoom);
     if (entryDate && leaveDate && chosenRoom) {
       const differenceInDates = (diffInMs / (1000 * 3600 * 24));
       const roomPrice = chosenRoom.split("$")[1];
@@ -36,6 +42,17 @@ const ReserveForm = ({ hut }) => {
     } else {
       setTotalPrice(0)
     }
+  }
+
+  const onReserve = () => {
+    const reservation = {
+      hut: hut,
+      entry: entryDate,
+      leave: leaveDate,
+      room: room.split(' $')[0],
+      price: totalPrice
+    };
+    dispatch(setReserveAction(reservation));
   }
 
   return (
@@ -92,7 +109,7 @@ const ReserveForm = ({ hut }) => {
             <figure className="Logo-small">
               <img src={smallLogo} alt="Logo" />
             </figure>
-            <button type="submit">Reservar</button>
+            <button type="submit" onClick={onReserve}><Link to={"/payment"}>Reservar</Link></button>
           </div>
         </form>
       </div>

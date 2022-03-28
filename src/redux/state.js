@@ -13,10 +13,16 @@ const initialState = {
     },
   },
   view: "landing",
-  citys: [],
+  reserve: {
+    hut: {},
+    entry: '',
+    leave: '',
+    room: '',
+    price: 0
+  },
   huts:
   {
-    name: "Fondo de bikini",
+    name: "",
     description: "",
     photo: [],
     rooms: [],

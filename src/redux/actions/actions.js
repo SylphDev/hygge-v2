@@ -1,4 +1,4 @@
-import { SET_CITYS, SET_HUTS, SET_USER, SET_VIEW } from "./type";
+import { SET_CITYS, SET_HUTS, SET_RESERVE, SET_USER, SET_VIEW } from "./type";
 
 const setCitysAction = (payload) => ({
   type: SET_CITYS,
@@ -16,5 +16,9 @@ const setHutsAction = (payload) => ({
   type: SET_HUTS,
   payload,
 });
+const setReserveAction = (payload) => ({
+  type: SET_RESERVE,
+  payload
+})
 
-export { setUserAction, setCitysAction, setViewAction, setHutsAction };
+export { setUserAction, setCitysAction, setViewAction, setHutsAction, setReserveAction };

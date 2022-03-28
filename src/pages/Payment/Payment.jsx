@@ -3,15 +3,17 @@ import { useLocation, useNavigate } from "react-router-dom";
 import logo from "../../assets/logos/logo-small-white.png";
 import { PayPalButton } from "react-paypal-button-v2";
 import "./Payment.css";
+import { useSelector } from "react-redux";
 
 const Payment = () => {
   const navigate = useNavigate();
+  const reservation = useSelector(state => state.reserve)
   const reserve = {
-    name: "Fondo de Bikini",
-    entryDate: "2022-03-20",
-    leaveDate: "2022-03-25",
-    roomType: "2 habitaciones",
-    price: 50,
+    name: reservation.hut.name,
+    entryDate: reservation.entry,
+    leaveDate: reservation.leave,
+    roomType: reservation.room,
+    price: reservation.price,
   };
   const paypalOptions = {
     clientId:
@@ -28,8 +30,6 @@ const Payment = () => {
       navigate("/payment/success");
     }
   };
-  // const location = useLocation()
-  // const { hut } = location.state
   return (
     <div className="Payment-container">
       <figure className="Payment-logo">
@@ -62,8 +62,8 @@ const Payment = () => {
           <PayPalButton
             paypalOptions={paypalOptions}
             buttonStyles={buttonStyles}
-            amount={reserve.price}
-            onSuccess={(data) => console.log(data)}
+            amount={reservation.price}
+            onSuccess={(data) => handlePaymentSuccess(data)}
             onError={(error) => console.log(error)}
             onCancel={(data) => console.log(data)}
           />
