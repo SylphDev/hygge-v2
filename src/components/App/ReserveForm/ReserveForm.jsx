@@ -4,9 +4,8 @@ import smallLogo from "../../../assets/logos/logo-small-black.png";
 import "./ReserveForm.css";
 
 const ReserveForm = ({ hut }) => {
-  let entryDate = "";
-  let leaveDate = "";
-  let differenceInDates = "";
+  const [entryDate, setEntryDate] = useState('');
+  const [leaveDate, setLeaveDate] = useState('');
   const [totalPrice, setTotalPrice] = useState("0.00");
 
   const { register, handleSubmit } = useForm();
@@ -16,22 +15,28 @@ const ReserveForm = ({ hut }) => {
 
   const getLeaveDate = (event) => {
     const date = event.target.value;
-    leaveDate = Date.parse(date);
-    const diffInMs = Math.abs(leaveDate - entryDate);
-    differenceInDates = (diffInMs / (1000 * 3600 * 24));
+    setLeaveDate(Date.parse(date));
   }
 
   const getEntryDate = (event) => {
     const date = event.target.value;
-    entryDate = Date.parse(date);
+    setEntryDate(Date.parse(date));
   }
 
   const calculateTotalPrice = (event) => {
+    const diffInMs = Math.abs(leaveDate - entryDate);
     const chosenRoom = event.target.value;
-    const roomPrice = chosenRoom.split("$")[1];
-    setTotalPrice(roomPrice * differenceInDates);
+    if (entryDate && leaveDate && chosenRoom) {
+      const differenceInDates = (diffInMs / (1000 * 3600 * 24));
+      const roomPrice = chosenRoom.split("$")[1];
+      setTotalPrice(roomPrice * differenceInDates);
+      console.log('entrada:', entryDate);
+      console.log('salida:', leaveDate);
+      console.log('precio:', roomPrice);
+    } else {
+      setTotalPrice(0)
+    }
   }
-
 
   return (
     <div className="ReserveForm-container">
@@ -63,13 +68,13 @@ const ReserveForm = ({ hut }) => {
             </div>
             <div className="Reserve-form-room">
               <label htmlFor="room-type">Tipo de habitacion</label>
-              <input {...register("room")} id="room-type" list="rooms" onChange={calculateTotalPrice}/>
+              <input {...register("room")} id="room-type" list="rooms" onChange={calculateTotalPrice} />
               <datalist id="rooms">
-              {hut.rooms.map(room =>
-                <React.Fragment>
-                  <option value={room.name + " $" + room.price} />
-                </React.Fragment>
-      )}
+                {hut.rooms.map(room =>
+                  <React.Fragment>
+                    <option value={room.name + " $" + room.price} />
+                  </React.Fragment>
+                )}
               </datalist>
             </div>
             <div className="Reserve-form-cost">
