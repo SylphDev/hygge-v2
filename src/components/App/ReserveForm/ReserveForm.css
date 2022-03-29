@@ -57,7 +57,7 @@ label {
     align-items: center;
     justify-content: center;
 }
- .ReserveForm-button button {
+.ReserveForm-button button {
     padding: 1rem 3rem;
     border-radius: 1rem;
     background-color: var(--white);
@@ -66,7 +66,7 @@ label {
     cursor: pointer;
     font-size: 1.9rem;
 }
- .ReserveForm-button button:hover {
+.ReserveForm-button button:hover {
     background-color: var(--mid-dark-blue);
     border: 0.1rem solid var(--mid-dark-blue);
     color: var(--white);
@@ -76,6 +76,19 @@ label {
 }
 .ReserveForm-button .Logo-small img {
     width: 12.5rem;
+}
+.calc-button {
+    padding: 0.5rem 1.5rem;
+    margin-top: 2rem;
+    border-radius: 1rem;
+    border: 0.2rem solid var(--mid-dark-blue);
+    color: var(--mid-dark-blue);
+    cursor: pointer;
+}
+.calc-button:hover {
+    border: 0.2rem solid var(--white);
+    color: var(--white);
+    background-color: var(--mid-dark-blue);
 }
 
 @media (max-width: 800px) {

@@ -11,6 +11,8 @@ const initialState = {
       active: [],
       finished: [],
     },
+    admin: false,
+    uid: ''
   },
   view: "landing",
   reserve: {
