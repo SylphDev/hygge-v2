@@ -1,0 +1,21 @@
+.secureDelete-container {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    background-color: var(--white);
+    color: var(--dark-blue);
+    border-radius: 0.5rem;
+    border: none;
+}
+.secureDelete-container .secureDelete-buttons {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 1rem;
+}
+.secureDelete-container .secureDelete-buttons button {
+    padding: 0.5rem 1rem;
+    border: 0.1rem solid var(--dark-blue);
+    color: var(--dark-blue);
+    border-radius: 0.5rem;
+    width: 30%;
+}
