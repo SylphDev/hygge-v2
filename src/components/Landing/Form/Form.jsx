@@ -1,15 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setUserAction, setViewAction } from "../../../redux/actions/actions";
+import { setErrorAction, setUserAction, setViewAction } from "../../../redux/actions/actions";
 import { auth, db } from "../../../firebase/firebaseConfig";
 import "./Form.css";
 
 const Form = ({ view }) => {
   const dispatch = useDispatch();
-  const { register, handleSubmit } = useForm()
-  const navigate = useNavigate()
+  const { register, handleSubmit } = useForm();
+  const navigate = useNavigate();
   const onSubmit = async (data) => {
     if (view === 'register') {
       try {
@@ -32,8 +32,10 @@ const Form = ({ view }) => {
         dispatch(setViewAction('search'));
         navigate('/search');
       } catch (e) {
-        console.log(e);
-        // dispatch(setErrorAction(e.code));
+        dispatch(setErrorAction({
+          state: true,
+          message: e.code
+        }))
       }
     } else {
       try {
@@ -43,8 +45,10 @@ const Form = ({ view }) => {
         //     // dispatch(setViewAction('search'));
         //     navigate('/search');
       } catch (e) {
-        console.log(e);
-        //     // dispatch(setErrorAction(e.code));
+        dispatch(setErrorAction({
+          state: true,
+          message: e.code
+        }))
       }
     }
   }

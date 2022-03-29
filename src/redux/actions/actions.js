@@ -1,4 +1,4 @@
-import { SET_CITYS, SET_HUTS, SET_RESERVE, SET_USER, SET_VIEW } from "./type";
+import { SET_CITYS, SET_ERROR, SET_HUTS, SET_RESERVE, SET_USER, SET_VIEW } from "./type";
 
 const setCitysAction = (payload) => ({
   type: SET_CITYS,
@@ -20,5 +20,9 @@ const setReserveAction = (payload) => ({
   type: SET_RESERVE,
   payload
 })
+const setErrorAction = (payload) => ({
+  type: SET_ERROR,
+  payload
+})
 
-export { setUserAction, setCitysAction, setViewAction, setHutsAction, setReserveAction };
+export { setUserAction, setCitysAction, setViewAction, setHutsAction, setReserveAction, setErrorAction };

@@ -4,7 +4,7 @@ import "./Admin.css";
 import HotelCard from "../../components/Search/HotelCard/HotelCard";
 import CityCard from "../../components/Search/CityDetails/CityDetails";
 import { Modal } from "../../components/App/Modal/Modal";
-import { SecureDelete } from "../../components/App/SecureDelete/SecureDelete";
+import { SecureDelete } from "../../components/App/secureDelete/secureDelete";
 import { useDispatch } from "react-redux";
 import { setHutsAction } from "../../redux/actions/actions";
 

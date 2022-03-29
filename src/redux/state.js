@@ -30,6 +30,10 @@ const initialState = {
     rooms: [],
     city: "",
   },
+  error: {
+    state: false,
+    message: ''
+  }
 };
 
 export { initialState };
