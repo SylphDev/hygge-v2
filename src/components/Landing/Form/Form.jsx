@@ -28,7 +28,6 @@ const Form = ({ view }) => {
           admin: false,
           uid: response.user.uid
         }
-        db.collection('')
         dispatch(setUserAction(user));
         dispatch(setViewAction('search'));
         navigate('/search');
