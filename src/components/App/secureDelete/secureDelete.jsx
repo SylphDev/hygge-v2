@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import './SecureDelete.css'
+import './secureDelete.css'
 
 const SecureDelete = ({ deleteHut, onClose }) => {
     const hut = useSelector(state => state.huts)

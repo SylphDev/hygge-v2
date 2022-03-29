@@ -4,15 +4,18 @@ import "./Admin.css";
 import HotelCard from "../../components/Search/HotelCard/HotelCard";
 import CityCard from "../../components/Search/CityDetails/CityDetails";
 import { Modal } from "../../components/App/Modal/Modal";
-import { SecureDelete } from "../../components/App/SecureDelete/SecureDelete";
+import { SecureDelete } from "../../components/App/secureDelete/secureDelete";
 import { useDispatch } from "react-redux";
 import { setHutsAction } from "../../redux/actions/actions";
+import { CityForm } from "../../components/App/CityForm/CityForm";
+import { HutForm } from "../../components/App/HutForm/HutForm";
 
 const Admin = () => {
   const dispatch = useDispatch()
   const [cities, setCities] = useState([]);
   const [huts, setHuts] = useState([]);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpenDeleteHut, setIsOpenDeleteHut] = useState(false);
+  const [isOpenCreateCity, setIsOpenCreateCity] = useState(false);
 
   const fetchCities = () => {
     const cities = db.collection("cities");
@@ -46,9 +49,13 @@ const Admin = () => {
       });
   }
 
-  const handleModal = (name) => {
-    setIsOpen(true);
+  const handleModalDeleteHut = (name) => {
+    setIsOpenDeleteHut(true);
     dispatch(setHutsAction({ name: name }))
+  }
+
+  const handleModalCreateCity = () => {
+    setIsOpenCreateCity(true);
   }
 
   useEffect(() => {
@@ -88,6 +95,12 @@ const Admin = () => {
   return (
     <div className="admin-page-container">
       <div className="Ciudades">
+      <button className="add-city-button" onClick={handleModalCreateCity}>
+              +
+            </button>
+            {isOpenCreateCity ? <Modal>
+              <CityForm />
+            </Modal> : null}
         {cities.map(city =>
           <CityCard
             key={city.name}
@@ -97,6 +110,9 @@ const Admin = () => {
         )}
       </div>
       <div className="Posadas">
+      <button className="add-hut-button">
+              +
+            </button>
         {huts.map(hut =>
           <React.Fragment>
             <HotelCard
@@ -106,11 +122,11 @@ const Admin = () => {
               ciudad={hut.city}
               urlimagen={hut.photos[0]}
               popularidad={" 8.3"} />
-            <span className="Icon Icon-delete" id={hut.name} onClick={() => handleModal(hut.name)}>
+            <span className="Icon Icon-delete" id={hut.name} onClick={() => handleModalDeleteHut(hut.name)}>
               🗑️
             </span>
-            {isOpen ? <Modal>
-              <SecureDelete deleteHut={(prueba) => deleteHut(prueba)} onClose={() => setIsOpen(false)} hutName={hut.name} />
+            {isOpenDeleteHut ? <Modal>
+              <SecureDelete deleteHut={(prueba) => deleteHut(prueba)} onClose={() => setIsOpenDeleteHut(false)} hutName={hut.name} />
             </Modal> : null}
           </React.Fragment>
         )}
