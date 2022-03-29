@@ -21,6 +21,7 @@ const Form = ({ view }) => {
           country: data.country,
           city: data.city,
           photoUrl: null,
+          phone: data.phone,
           reserves: {
             active: [],
             finished: [],
