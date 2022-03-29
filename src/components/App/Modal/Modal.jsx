@@ -1,20 +1,14 @@
-import React from "react";
-import "./Modal.css";
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './Modal.css';
 
-const Modal = ({ open, children, onClose, deleteHut, hutName }) => {
-    if(!open) return null;
-    
+const Modal = ({ children }) => {
     return ReactDOM.createPortal(
-        <>
-        <div className="overlay"/>
-        <div className="modal-container">
-            <button onClick={deleteHut(hutName)}>Si</button>
-            <button onClick={onClose}>No</button>
-            { children }</div>
-            </>,
-            document.getElementById('portal')
+        <div className="modal-background">
+            {children}
+        </div>,
+        document.getElementById('modal')
     );
-}
+};
 
 export { Modal };
