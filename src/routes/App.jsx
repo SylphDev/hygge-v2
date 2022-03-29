@@ -11,6 +11,7 @@ import { Reserve } from "../pages/Reserve/Reserve";
 import { Search } from "../pages/Search/Search";
 import { Ready } from "../pages/Ready/Ready";
 import { store } from "../redux/store";
+import { Admin } from "../pages/Admin/Admin";
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
             <Route path={"/search/:hutName"} element={<Reserve />} />
             <Route path={"/payment"} element={<Payment />} />
             <Route path={"/payment/success"} element={<Ready />} />
+            <Route path="/admin" element={<Admin />}/>
           </Routes>
         </LandingLayout>
       </Provider>
