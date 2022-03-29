@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
+import errorReducer from "./errorReducer";
 import hutsReducer from "./hutsReducer";
 import reserveReducer from "./reserveReducer";
 import userReducer from "./userReducer";
@@ -9,6 +10,7 @@ const reducer = combineReducers({
   view: viewReducer,
   reserve: reserveReducer,
   huts: hutsReducer,
+  error: errorReducer
 });
 
 export { reducer };

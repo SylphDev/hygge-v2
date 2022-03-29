@@ -3,9 +3,14 @@ import { useLocation, useNavigate } from "react-router-dom";
 import logo from "../../assets/logos/logo-small-white.png";
 import { PayPalButton } from "react-paypal-button-v2";
 import "./Payment.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setErrorAction } from "../../redux/actions/actions";
+import { Modal } from "../../components/App/Modal/Modal";
+import ErrorMessage from "../../components/Landing/ErrorMessage/ErrorMessage";
 
 const Payment = () => {
+  const errorState = useSelector(state => state.error)
+  const dispatch = useDispatch()
   const navigate = useNavigate();
   const reservation = useSelector(state => state.reserve)
   const reserve = {
@@ -30,6 +35,12 @@ const Payment = () => {
       navigate("/payment/success");
     }
   };
+  const openModal = (e) => {
+    dispatch(setErrorAction({
+      state: true,
+      message: e,
+    }))
+  }
   return (
     <div className="Payment-container">
       <figure className="Payment-logo">
@@ -64,11 +75,15 @@ const Payment = () => {
             buttonStyles={buttonStyles}
             amount={reservation.price}
             onSuccess={(data) => handlePaymentSuccess(data)}
-            onError={(error) => console.log(error)}
+            onError={(error) => openModal(error)}
             onCancel={(data) => console.log(data)}
           />
         </div>
       </div>
+      {errorState.state &&
+        <Modal>
+          <ErrorMessage />
+        </Modal>}
     </div>
   );
 };
