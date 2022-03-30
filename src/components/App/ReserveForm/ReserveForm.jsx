@@ -34,14 +34,12 @@ const ReserveForm = ({ hut }) => {
     }
   };
   const getChosenRoom = (event) => {
-    setChosenRoom(event.target.value);
-  };
+    console.log(event.target.value);
+    setChosenRoom(event.target.value)
+  }
 
   const calculateTotalPrice = (event) => {
-    const diffInMs = Date.parse(leaveDate) - Date.parse(entryDate);
-    console.log(Date.parse(leaveDate));
-    console.log(Date.parse(entryDate));
-    console.log(diffInMs);
+    const diffInMs = (Date.parse(leaveDate) - Date.parse(entryDate));
     setRoom(chosenRoom);
     if (entryDate && leaveDate && chosenRoom && diffInMs > 0) {
       const differenceInDates = diffInMs / (1000 * 3600 * 24);
@@ -58,8 +56,9 @@ const ReserveForm = ({ hut }) => {
         hut: hut,
         entry: entryDate,
         leave: leaveDate,
-        room: room.split(" $")[0],
+        room: room.split(' $')[0],
         price: totalPrice,
+        rate: false
       };
       dispatch(setReserveAction(reservation));
       navigate("/payment");
@@ -96,19 +95,14 @@ const ReserveForm = ({ hut }) => {
             </div>
             <div className="Reserve-form-room">
               <label htmlFor="room-type">Tipo de habitacion</label>
-              <input
-                {...register("room")}
-                id="room-type"
-                list="rooms"
-                onChange={getChosenRoom}
-              />
-              <datalist id="rooms">
-                {hut.rooms.map((room) => (
+              {/* <input {...register("room")} id="room-type" list="rooms" onChange={getChosenRoom} /> */}
+              <select id="rooms room-type" {...register("room")} list="rooms" onChange={getChosenRoom}>
+                {hut.rooms.map(room =>
                   <React.Fragment>
-                    <option value={room.name + " $" + room.price} />
+                    <option value={room.name + " $" + room.price}>{room.name + " $" + room.price}</option>
                   </React.Fragment>
-                ))}
-              </datalist>
+                )}
+              </select>
             </div>
             <div className="Reserve-form-cost">
               <p>Costo:</p>

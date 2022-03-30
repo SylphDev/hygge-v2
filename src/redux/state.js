@@ -17,10 +17,11 @@ const initialState = {
   view: "landing",
   reserve: {
     hut: {},
-    entry: "",
-    leave: "",
-    room: "",
+    entry: '',
+    leave: '',
+    room: '',
     price: 0,
+    rate: false,
   },
   huts: {
     name: "",
@@ -28,6 +29,10 @@ const initialState = {
   citys: {
     name: "",
   },
+  error: {
+    state: false,
+    message: ''
+  }
 };
 
 export { initialState };

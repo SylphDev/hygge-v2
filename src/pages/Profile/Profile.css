@@ -63,6 +63,22 @@
 .Profile-container .Profile-info p {
     margin-bottom: 0;
 }
+.Profile-container .Reserves {
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 1rem;
+}
+.Profile-container .Reserves .Reserves-title {
+    text-align: start;
+}
+.Profile-container .Reserves .Reserve-cards {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
 @media (max-width:599px) {
     .Profile-container .Profile-picture {
         width: 8rem;

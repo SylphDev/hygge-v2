@@ -4,6 +4,7 @@ import "./Search.css";
 import { db } from "../../firebase/firebaseConfig";
 import { SearchBar } from "../../components/App/SearchBar/SearchBar";
 import CityCard from "../../components/Search/CityDetails/CityDetails";
+import { NoCity } from "../../components/Search/NoCity/NoCity";
 
 const Search = () => {
   const [cities, setCities] = useState([]);
@@ -95,7 +96,12 @@ const Search = () => {
         ))}
       </div>
 
-      {initCity !== "" ? (
+      {initCity === "" ?
+        <NoCity />
+        : null}
+
+      {initCity !== "" ?
+
         <div className="Posadas">
           <SearchBar
             searchValue={searchValue}

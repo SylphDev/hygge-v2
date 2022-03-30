@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setUserAction, setViewAction } from "../../../redux/actions/actions";
+import { setErrorAction, setUserAction, setViewAction } from "../../../redux/actions/actions";
 import { auth, db } from "../../../firebase/firebaseConfig";
+import { pushUser, getUser } from "../../../utils/pushToDB";
 import "./Form.css";
 
 const Form = ({ view }) => {
@@ -24,6 +25,7 @@ const Form = ({ view }) => {
           country: data.country,
           city: data.city,
           photoUrl: null,
+          phone: data.phone,
           reserves: {
             active: [],
             finished: [],
@@ -32,25 +34,27 @@ const Form = ({ view }) => {
           uid: response.user.uid,
         };
         dispatch(setUserAction(user));
-        dispatch(setViewAction("search"));
-        navigate("/search");
+        dispatch(setViewAction('search'));
+        pushUser(user);
+        navigate('/search');
       } catch (e) {
-        console.log(e);
-        // dispatch(setErrorAction(e.code));
+        dispatch(setErrorAction({
+          state: true,
+          message: e.code
+        }))
       }
     } else {
       try {
-        const response = await auth.signInWithEmailAndPassword(
-          data.email,
-          data.password
-        );
-        console.log(response);
-        //     // dispatch(setUserAction({ email: data.email }));
-        //     // dispatch(setViewAction('search'));
-        //     navigate('/search');
+        const response = await auth.signInWithEmailAndPassword(data.email, data.password);
+        const user = await getUser(response.user.email)
+        dispatch(setUserAction(user));
+        dispatch(setViewAction('search'));
+        navigate('/search');
       } catch (e) {
-        console.log(e);
-        //     // dispatch(setErrorAction(e.code));
+        dispatch(setErrorAction({
+          state: true,
+          message: e.code
+        }))
       }
     }
   };

@@ -1,0 +1,33 @@
+.No-City-container {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: inherit;
+    border: 0.1rem solid var(--dark-blue);
+    border-radius: 1rem;
+    padding: 1rem;
+}
+.No-City-container .No-City-info {
+    width: 80%;
+}
+.No-City-container .No-City-info p {
+    font-size: 2.5rem;
+}
+.No-City-container .No-City-image-container {
+    width: 40%;
+    min-width: 25rem;
+}
+.No-City-container .No-City-image-container img {
+    width: 100%;
+}
+
+@media (max-width: 700px) {
+    .No-City-container .No-City-info p {
+        font-size: 1.6rem;
+    }
+    .No-City-container {
+        align-self: center;
+    }
+}

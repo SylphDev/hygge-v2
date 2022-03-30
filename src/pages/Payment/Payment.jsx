@@ -3,17 +3,26 @@ import { useLocation, useNavigate } from "react-router-dom";
 import logo from "../../assets/logos/logo-small-white.png";
 import { PayPalButton } from "react-paypal-button-v2";
 import "./Payment.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addReserveAction, setErrorAction } from "../../redux/actions/actions";
+import { Modal } from "../../components/App/Modal/Modal";
+import ErrorMessage from "../../components/Landing/ErrorMessage/ErrorMessage";
+import { db } from "../../firebase/firebaseConfig";
+import { updateUser } from "../../utils/pushToDB";
 
 const Payment = () => {
+  const user = useSelector(state => state.user)
+  const errorState = useSelector(state => state.error);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const reservation = useSelector((state) => state.reserve);
   const reserve = {
     name: reservation.hut.name,
-    entryDate: reservation.entry,
-    leaveDate: reservation.leave,
+    entryDate: reservation.entry.toLocaleDateString(),
+    leaveDate: reservation.leave.toLocaleDateString(),
     roomType: reservation.room,
     price: reservation.price,
+    rating: reservation.rate
   };
   const paypalOptions = {
     clientId:
@@ -27,9 +36,17 @@ const Payment = () => {
   };
   const handlePaymentSuccess = (data) => {
     if (data.status === "COMPLETED") {
+      updateUser(user, user.email, user.reserves, reserve)
+      dispatch(addReserveAction(reserve))
       navigate("/payment/success");
     }
   };
+  const openModal = (e) => {
+    dispatch(setErrorAction({
+      state: true,
+      message: e,
+    }))
+  }
   return (
     <div className="Payment-container">
       <figure className="Payment-logo">
@@ -64,11 +81,15 @@ const Payment = () => {
             buttonStyles={buttonStyles}
             amount={reservation.price}
             onSuccess={(data) => handlePaymentSuccess(data)}
-            onError={(error) => console.log(error)}
+            onError={(error) => openModal(error)}
             onCancel={(data) => console.log(data)}
           />
         </div>
       </div>
+      {errorState.state &&
+        <Modal>
+          <ErrorMessage />
+        </Modal>}
     </div>
   );
 };

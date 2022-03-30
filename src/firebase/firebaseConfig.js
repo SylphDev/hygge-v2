@@ -15,5 +15,6 @@ const db = app.firestore();
 
 const auth = app.auth();
 const googleProvider = new firebase.auth.GoogleAuthProvider();
+const faceBookProvider = new firebase.auth.FacebookAuthProvider();
 
-export { db, app, auth, googleProvider };
+export { db, app, auth, googleProvider, faceBookProvider };
