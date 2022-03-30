@@ -3,8 +3,10 @@ import hutsReducer from "./hutsReducer";
 import reserveReducer from "./reserveReducer";
 import userReducer from "./userReducer";
 import viewReducer from "./viewReducer";
+import citysReducer from "./citysReducer";
 
 const reducer = combineReducers({
+  city: citysReducer,
   user: userReducer,
   view: viewReducer,
   reserve: reserveReducer,
