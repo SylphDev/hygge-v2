@@ -20,7 +20,8 @@ const initialState = {
     entry: '',
     leave: '',
     room: '',
-    price: 0
+    price: 0,
+    rate: false,
   },
   huts:
   {
