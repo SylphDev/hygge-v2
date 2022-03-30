@@ -18,6 +18,7 @@ const setHutsAction = (payload) => ({
 });
 const setReserveAction = (payload) => ({
   type: SET_RESERVE,
+
   payload
 })
 const setErrorAction = (payload) => ({

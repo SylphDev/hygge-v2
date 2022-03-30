@@ -12,7 +12,7 @@ const initialState = {
       finished: [],
     },
     admin: false,
-    uid: ''
+    uid: "",
   },
   view: "landing",
   reserve: {
@@ -23,13 +23,11 @@ const initialState = {
     price: 0,
     rate: false,
   },
-  huts:
-  {
+  huts: {
     name: "",
-    description: "",
-    photo: [],
-    rooms: [],
-    city: "",
+  },
+  citys: {
+    name: "",
   },
   error: {
     state: false,
