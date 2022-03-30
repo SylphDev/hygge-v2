@@ -4,18 +4,14 @@ import { db } from "../../../firebase/firebaseConfig";
 const CityForm = () => {
   const { register, handleSubmit } = useForm();
 
-  // const createNewCity = async (data) => {
-  //     await db.collection("cities").add({
-  //         about: data.about,
-  //         huts: [],
-  //         name: data.name,
-  //         photos: data.image
-  //     })
-  //     console.log("Exito");
-  // };
-
-  const createNewCity = (data) => {
-    console.log(data);
+  const createNewCity = async (data) => {
+      await db.collection("cities").add({
+          about: data.about,
+          huts: [],
+          name: data.name,
+          photos: "https://zonadeprensard.com/wp-content/uploads/2022/01/Demon-Slayer-Rengoku-1-1200x675.jpg"
+      })
+      console.log("Exito");
   };
 
   return (
@@ -34,7 +30,7 @@ const CityForm = () => {
             id="city-image"
             accept="image/*"
           />
-          <button type="submit" onClick={createNewCity}>
+          <button type="submit">
             Crear
           </button>
         </form>
