@@ -5,30 +5,29 @@ const HutForm = () => {
   const { register, handleSubmit } = useForm();
 
   const createNewHut = async (data) => {
-      const hutImages = [];
-      data.images.map(image => hutImages.push(image)) //Esto es asumiendo que varias imagenes vienen en un array, honestamente no se como vienen porque no he podido probar
+    try {
+      const myCity = await db
+        .collection("cities")
+        .where("name", "==", data.city)
+        .get();
+      const docID = myCity.docs[0].id;
+      let responseCityHuts = myCity.docs[0].data().huts;
+      responseCityHuts.push(data.name);
       await db.collection("huts").add({
-          about: data.about,
-          city: data.city,
-          name: data.name,
-          photos: hutImages,
-          rooms: []
-      })
-      //Me traigo la ciudad del hut que estamos agregando
-      db.collection("cities").where("name", "==", data.city).get()
-      .then(response => {
-          //Agarro los huts que ya existen en esa ciudad
-          let responseCityHuts = response.docs[0].huts;
-          //Pusheo el hut nuevo
-          responseCityHuts.push(data.name);
+        about: data.about,
+        city: data.city,
+        name: data.name,
+        rooms: [],
       });
-      //Me traigo la ciudad
-      db.collection("cities").where("name", "==", data.city).get()
-      .then(response => {
-          //Updateo huts
-          response.docs[0].update({huts: responseCityHuts})
-      })
-      console.log("Exito");
+      await db
+        .collection("cities")
+        .doc(docID)
+        .update({ huts: responseCityHuts });
+    } catch {
+      alert(
+        "Para crear una posada, la ciudad debe existir en la base de datos."
+      );
+    }
   };
 
   return (
@@ -50,9 +49,7 @@ const HutForm = () => {
             accept="image/*"
             multiple
           />
-          <button type="submit" onClick={createNewHut}>
-            Crear
-          </button>
+          <button type="submit">Crear</button>
         </form>
       </div>
     </div>

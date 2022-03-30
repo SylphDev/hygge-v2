@@ -25,10 +25,9 @@ const initialState = {
   huts: {
     name: "",
   },
-  citys:
-  {
+  citys: {
     name: "",
-  }
+  },
 };
 
 export { initialState };

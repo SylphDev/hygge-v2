@@ -9,6 +9,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCitysAction, setHutsAction } from "../../redux/actions/actions";
 import { CityForm } from "../../components/App/CityForm/CityForm";
 import { HutForm } from "../../components/App/HutForm/HutForm";
+import { UpdateHutForm } from "../../components/App/UpdateHutForm/UpdateHutForm";
+import { UpdateCityForm } from "../../components/App/UpdateCityForm/UpdateCityForm";
 
 const Admin = () => {
   const cityState = useSelector((state) => state.citys);
@@ -19,6 +21,9 @@ const Admin = () => {
   const [isOpenDeleteHut, setIsOpenDeleteHut] = useState(false);
   const [isOpenDeleteCity, setIsOpenDeleteCity] = useState(false);
   const [isOpenCreateCity, setIsOpenCreateCity] = useState(false);
+  const [isOpenCreateHut, setIsOpenCreateHut] = useState(false);
+  const [isOpenUpdateCity, setIsOpenUpdateCity] = useState(false);
+  const [isOpenUpdateHut, setIsOpenUpdateHut] = useState(false);
 
   const fetchCities = () => {
     const cities = db.collection("cities");
@@ -68,16 +73,32 @@ const Admin = () => {
     setIsOpenCreateCity(true);
   };
 
+  const handleModalCreateHut = () => {
+    setIsOpenCreateHut(true);
+  };
+
+  const handleModalUpdateHut = (name) => {
+    dispatch(setHutsAction({ name: name }));
+    setIsOpenUpdateHut(true);
+  };
+
+  const handleModalUpdateCity = (name) => {
+    dispatch(setCitysAction({ name: name }));
+    setIsOpenUpdateCity(true);
+  };
+
   useEffect(() => {
     fetchCities();
     fetchHuts();
   }, []);
 
   const deleteHut = (hutName) => {
-    db.collection("huts").where("name", "==", hutName).get()
-    .then(response => {
+    db.collection("huts")
+      .where("name", "==", hutName)
+      .get()
+      .then((response) => {
         response.docs[0].ref.delete();
-    });
+      });
     // fetchHuts();
 
     console.log(hutName);
@@ -109,6 +130,7 @@ const Admin = () => {
   return (
     <div className="admin-page-container">
       <div className="Ciudades">
+        <h1 className="cities-title">Ciudades</h1>
         <button className="add-city-button" onClick={handleModalCreateCity}>
           +
         </button>
@@ -132,11 +154,25 @@ const Admin = () => {
             >
               🗑️
             </span>
+            <span
+              className="Icon Icon-update"
+              onClick={() => handleModalUpdateCity(city.name)}
+            >
+              🔃
+            </span>
           </React.Fragment>
         ))}
       </div>
       <div className="Posadas">
-        <button className="add-hut-button">+</button>
+        <h1 className="huts-title">Posadas</h1>
+        <button className="add-hut-button" onClick={handleModalCreateHut}>
+          +
+        </button>
+        {isOpenCreateHut ? (
+          <Modal>
+            <HutForm />
+          </Modal>
+        ) : null}
         {huts.map((hut) => (
           <React.Fragment>
             <HotelCard
@@ -154,6 +190,12 @@ const Admin = () => {
             >
               🗑️
             </span>
+            <span
+              className="Icon Icon-update"
+              onClick={() => handleModalUpdateHut(hut.name)}
+            >
+              🔃
+            </span>
             {isOpenDeleteHut ? (
               <Modal>
                 <SecureDelete
@@ -170,6 +212,16 @@ const Admin = () => {
                   onClose={() => setIsOpenDeleteCity(false)}
                   type={cityState}
                 />
+              </Modal>
+            ) : null}
+            {isOpenUpdateHut ? (
+              <Modal>
+                <UpdateHutForm type={hutState} />
+              </Modal>
+            ) : null}
+            {isOpenUpdateCity ? (
+              <Modal>
+                <UpdateCityForm type={cityState} />
               </Modal>
             ) : null}
           </React.Fragment>
