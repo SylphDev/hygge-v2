@@ -18,7 +18,6 @@ const updateUser = async (user, email, reserve, newReserve) => {
     const userID = userDB.docs[0].id
     let newInfo;
     if (reserve.active[0] == null) {
-        console.log('alla');
         newInfo = {
             "reserves.active": [{
                 name: newReserve.name,
@@ -30,13 +29,10 @@ const updateUser = async (user, email, reserve, newReserve) => {
             }]
         }
     } else {
-        console.log('aqui');
         newInfo = {
             "reserves.active": [...reserve.active, newReserve]
         }
     }
-    console.log(newInfo);
-    console.log(userID);
     await db.collection('users').doc(userID).update(newInfo)
 }
 

@@ -3,7 +3,7 @@ import "./ServiceButtons.css";
 import googleIcon from "../../../assets/logos/Google-icon.png";
 import facebookIcon from "../../../assets/logos/Facebook-icon.png";
 import twitterIcon from "../../../assets/logos/Twitter-icon.png";
-import { auth, db, googleProvider } from "../../../firebase/firebaseConfig";
+import { auth, db, faceBookProvider, googleProvider } from "../../../firebase/firebaseConfig";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getUser, pushUser } from "../../../utils/pushToDB";
@@ -47,6 +47,10 @@ const ServiceButtons = ({ view }) => {
       }))
     }
   }
+  const handleLoginFacebook = async () => {
+    const response = await auth.signInWithPopup(faceBookProvider);
+    console.log(response);
+  }
   return (
     <div className="ServiceButtons-container">
       <div onClick={handleLoginGoogle} className="Google-button">
@@ -54,7 +58,7 @@ const ServiceButtons = ({ view }) => {
           <img src={googleIcon} alt="Google icon" />
         </figure>
       </div>
-      <div className="Facebook-button">
+      {/* <div className="Facebook-button">
         <figure className="Icon-container">
           <img src={facebookIcon} alt="Facebook icon" />
         </figure>
@@ -63,7 +67,7 @@ const ServiceButtons = ({ view }) => {
         <figure className="Icon-container">
           <img src={twitterIcon} alt="Twitter icon" />
         </figure>
-      </div>
+      </div> */}
     </div>
   );
 };
