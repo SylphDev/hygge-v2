@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 
 const Payment = () => {
   const navigate = useNavigate();
-  const reservation = useSelector(state => state.reserve)
+  const reservation = useSelector((state) => state.reserve);
   const reserve = {
     name: reservation.hut.name,
     entryDate: reservation.entry,

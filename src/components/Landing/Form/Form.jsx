@@ -8,12 +8,15 @@ import "./Form.css";
 
 const Form = ({ view }) => {
   const dispatch = useDispatch();
-  const { register, handleSubmit } = useForm()
-  const navigate = useNavigate()
+  const { register, handleSubmit } = useForm();
+  const navigate = useNavigate();
   const onSubmit = async (data) => {
-    if (view === 'register') {
+    if (view === "register") {
       try {
-        const response = await auth.createUserWithEmailAndPassword(data.email, data.password);
+        const response = await auth.createUserWithEmailAndPassword(
+          data.email,
+          data.password
+        );
         const user = {
           name: data.name,
           lastName: data.lastName,
@@ -26,18 +29,21 @@ const Form = ({ view }) => {
             finished: [],
           },
           admin: false,
-          uid: response.user.uid
-        }
+          uid: response.user.uid,
+        };
         dispatch(setUserAction(user));
-        dispatch(setViewAction('search'));
-        navigate('/search');
+        dispatch(setViewAction("search"));
+        navigate("/search");
       } catch (e) {
         console.log(e);
         // dispatch(setErrorAction(e.code));
       }
     } else {
       try {
-        const response = await auth.signInWithEmailAndPassword(data.email, data.password);
+        const response = await auth.signInWithEmailAndPassword(
+          data.email,
+          data.password
+        );
         console.log(response);
         //     // dispatch(setUserAction({ email: data.email }));
         //     // dispatch(setViewAction('search'));
@@ -47,7 +53,7 @@ const Form = ({ view }) => {
         //     // dispatch(setErrorAction(e.code));
       }
     }
-  }
+  };
 
   return (
     <form className="Form-container" onSubmit={handleSubmit(onSubmit)}>
@@ -55,13 +61,13 @@ const Form = ({ view }) => {
         <React.Fragment>
           <div className="Form-container-name double-input">
             <input
-              {...register('name')}
+              {...register("name")}
               type="text"
               className="input Name-input"
               placeholder="Nombre"
             />
             <input
-              {...register('lastName')}
+              {...register("lastName")}
               type="text"
               className="input Name-input"
               placeholder="Apellido"
@@ -69,20 +75,20 @@ const Form = ({ view }) => {
           </div>
           <div className="Form-container-country double-input">
             <input
-              {...register('country')}
+              {...register("country")}
               type="text"
               className="input Country-input"
               placeholder="País"
             />
             <input
-              {...register('city')}
+              {...register("city")}
               type="text"
               className="input City-input"
               placeholder="Ciudad"
             />
           </div>
           <input
-            {...register('phone')}
+            {...register("phone")}
             type="number"
             className="input Phone-input"
             placeholder="Telefóno"
@@ -90,13 +96,13 @@ const Form = ({ view }) => {
         </React.Fragment>
       ) : null}
       <input
-        {...register('email')}
+        {...register("email")}
         type="email"
         className="input Email-input"
         placeholder="Correo Electrónico"
       />
       <input
-        {...register('password')}
+        {...register("password")}
         type="password"
         className="input Password-input"
         placeholder="Contraseña"

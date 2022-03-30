@@ -9,11 +9,11 @@ import { useSelector } from "react-redux";
 
 const Reserve = () => {
   const images = [sp1, sp2, sp3];
-  const hut = useSelector(state => state.huts);
+  const hut = useSelector((state) => state.huts);
   const roomsName = [];
-  const rooms = hut.rooms.map(room => {
-    roomsName.push(room.name)
-  })
+  const rooms = hut.rooms.map((room) => {
+    roomsName.push(room.name);
+  });
 
   return (
     <div className="Reserve-container">
@@ -33,7 +33,7 @@ const Reserve = () => {
           </p>
           <p className="Hut-info-rooms">
             <b>Tipos de habitación: </b>
-            {roomsName.join(', ')}
+            {roomsName.join(", ")}
           </p>
           <p className="Hut-info-location">
             <b>Tipo de establecimiento: </b>

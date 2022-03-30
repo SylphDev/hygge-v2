@@ -18,7 +18,13 @@ const setHutsAction = (payload) => ({
 });
 const setReserveAction = (payload) => ({
   type: SET_RESERVE,
-  payload
-})
+  payload,
+});
 
-export { setUserAction, setCitysAction, setViewAction, setHutsAction, setReserveAction };
+export {
+  setUserAction,
+  setCitysAction,
+  setViewAction,
+  setHutsAction,
+  setReserveAction,
+};

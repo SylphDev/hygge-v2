@@ -12,18 +12,17 @@ const initialState = {
       finished: [],
     },
     admin: false,
-    uid: ''
+    uid: "",
   },
   view: "landing",
   reserve: {
     hut: {},
-    entry: '',
-    leave: '',
-    room: '',
-    price: 0
+    entry: "",
+    leave: "",
+    room: "",
+    price: 0,
   },
-  huts:
-  {
+  huts: {
     name: "",
     description: "",
     photo: [],

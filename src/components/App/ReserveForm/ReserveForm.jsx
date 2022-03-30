@@ -8,10 +8,10 @@ import "./ReserveForm.css";
 
 const ReserveForm = ({ hut }) => {
   const navigate = useNavigate();
-  const dispatch = useDispatch()
-  const [entryDate, setEntryDate] = useState('');
-  const [leaveDate, setLeaveDate] = useState('');
-  const [chosenRoom, setChosenRoom] = useState('');
+  const dispatch = useDispatch();
+  const [entryDate, setEntryDate] = useState("");
+  const [leaveDate, setLeaveDate] = useState("");
+  const [chosenRoom, setChosenRoom] = useState("");
   const [totalPrice, setTotalPrice] = useState("0.00");
   const [room, setRoom] = useState("");
 
@@ -21,36 +21,36 @@ const ReserveForm = ({ hut }) => {
   };
   const getLeaveDate = (event) => {
     const date = new Date(event.target.value);
-    const today = new Date()
+    const today = new Date();
     if (date > today) {
       setLeaveDate(date);
     }
-  }
+  };
   const getEntryDate = (event) => {
     const date = new Date(event.target.value);
-    const today = new Date()
+    const today = new Date();
     if (date > today) {
       setEntryDate(date);
     }
-  }
+  };
   const getChosenRoom = (event) => {
-    setChosenRoom(event.target.value)
-  }
+    setChosenRoom(event.target.value);
+  };
 
   const calculateTotalPrice = (event) => {
-    const diffInMs = (Date.parse(leaveDate) - Date.parse(entryDate));
-    console.log(Date.parse(leaveDate))
-    console.log(Date.parse(entryDate))
+    const diffInMs = Date.parse(leaveDate) - Date.parse(entryDate);
+    console.log(Date.parse(leaveDate));
+    console.log(Date.parse(entryDate));
     console.log(diffInMs);
     setRoom(chosenRoom);
-    if ((entryDate && leaveDate && chosenRoom) && (diffInMs > 0)) {
-      const differenceInDates = (diffInMs / (1000 * 3600 * 24));
+    if (entryDate && leaveDate && chosenRoom && diffInMs > 0) {
+      const differenceInDates = diffInMs / (1000 * 3600 * 24);
       const roomPrice = chosenRoom.split("$")[1];
       setTotalPrice(roomPrice * differenceInDates);
     } else {
-      setTotalPrice(0)
+      setTotalPrice(0);
     }
-  }
+  };
 
   const onReserve = () => {
     if (entryDate && leaveDate && totalPrice && room) {
@@ -58,13 +58,13 @@ const ReserveForm = ({ hut }) => {
         hut: hut,
         entry: entryDate,
         leave: leaveDate,
-        room: room.split(' $')[0],
-        price: totalPrice
+        room: room.split(" $")[0],
+        price: totalPrice,
       };
       dispatch(setReserveAction(reservation));
-      navigate('/payment')
+      navigate("/payment");
     }
-  }
+  };
 
   return (
     <div className="ReserveForm-container">
@@ -96,13 +96,18 @@ const ReserveForm = ({ hut }) => {
             </div>
             <div className="Reserve-form-room">
               <label htmlFor="room-type">Tipo de habitacion</label>
-              <input {...register("room")} id="room-type" list="rooms" onChange={getChosenRoom} />
+              <input
+                {...register("room")}
+                id="room-type"
+                list="rooms"
+                onChange={getChosenRoom}
+              />
               <datalist id="rooms">
-                {hut.rooms.map(room =>
+                {hut.rooms.map((room) => (
                   <React.Fragment>
                     <option value={room.name + " $" + room.price} />
                   </React.Fragment>
-                )}
+                ))}
               </datalist>
             </div>
             <div className="Reserve-form-cost">
@@ -115,13 +120,21 @@ const ReserveForm = ({ hut }) => {
                 value={"$" + totalPrice}
               />
             </div>
-            <button onClick={calculateTotalPrice} className="calc-button" type="button">Calcular</button>
+            <button
+              onClick={calculateTotalPrice}
+              className="calc-button"
+              type="button"
+            >
+              Calcular
+            </button>
           </div>
           <div className="ReserveForm-button">
             <figure className="Logo-small">
               <img src={smallLogo} alt="Logo" />
             </figure>
-            <button type="submit" onClick={onReserve}>Reservar</button>
+            <button type="submit" onClick={onReserve}>
+              Reservar
+            </button>
           </div>
         </form>
       </div>

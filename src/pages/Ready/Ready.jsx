@@ -13,16 +13,12 @@ const Ready = () => {
           </figure>
         </div>
         <div className="Ready-text">
-          <p>
-            SU RESERVA SE HA REALIZADO CON ÉXITO
-          </p>
+          <p>SU RESERVA SE HA REALIZADO CON ÉXITO</p>
         </div>
       </div>
       <div className="Button-container">
         <Link to={"/search"}>
-          <button type="button">
-            Volver a Home
-          </button>
+          <button type="button">Volver a Home</button>
         </Link>
       </div>
     </div>

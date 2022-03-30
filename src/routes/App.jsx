@@ -27,7 +27,7 @@ const App = () => {
             <Route path={"/search/:hutName"} element={<Reserve />} />
             <Route path={"/payment"} element={<Payment />} />
             <Route path={"/payment/success"} element={<Ready />} />
-            <Route path="/admin" element={<Admin />}/>
+            <Route path="/admin" element={<Admin />} />
           </Routes>
         </LandingLayout>
       </Provider>
