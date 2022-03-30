@@ -9,10 +9,10 @@ import { Modal } from "../../components/App/Modal/Modal";
 import ErrorMessage from "../../components/Landing/ErrorMessage/ErrorMessage";
 
 const Payment = () => {
-  const errorState = useSelector(state => state.error)
-  const dispatch = useDispatch()
+  const errorState = useSelector(state => state.error);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const reservation = useSelector(state => state.reserve)
+  const reservation = useSelector(state => state.reserve);
   const reserve = {
     name: reservation.hut.name,
     entryDate: reservation.entry,
@@ -55,11 +55,11 @@ const Payment = () => {
           </p>
           <p>
             <b>Fecha de entrada: </b>
-            {reserve.entryDate}
+            {reserve.entryDate.toLocaleDateString()}
           </p>
           <p>
             <b>Fecha de salida: </b>
-            {reserve.leaveDate}
+            {reserve.leaveDate.toLocaleDateString()}
           </p>
           <p>
             <b>Habitacion: </b>
