@@ -24,11 +24,11 @@ const initialState = {
   },
   huts: {
     name: "",
-    description: "",
-    photo: [],
-    rooms: [],
-    city: "",
   },
+  citys:
+  {
+    name: "",
+  }
 };
 
 export { initialState };
