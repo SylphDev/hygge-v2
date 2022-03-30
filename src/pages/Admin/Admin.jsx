@@ -60,7 +60,7 @@ const Admin = () => {
   };
 
   const handleModalDeleteCity = (name) => {
-    dispatch(setCitysAction({ name: name }))
+    dispatch(setCitysAction({ name: name }));
     setIsOpenDeleteCity(true);
   };
 
@@ -74,10 +74,10 @@ const Admin = () => {
   }, []);
 
   const deleteHut = (hutName) => {
-    // db.collection("huts").where("name", "==", hutName).get()
-    // .then(response => {
-    //     response.docs[0].ref.delete();
-    // });
+    db.collection("huts").where("name", "==", hutName).get()
+    .then(response => {
+        response.docs[0].ref.delete();
+    });
     // fetchHuts();
 
     console.log(hutName);
