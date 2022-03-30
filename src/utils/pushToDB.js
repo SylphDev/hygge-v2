@@ -12,7 +12,32 @@ const getUser = async (email) => {
     } else {
         return null;
     }
-
+}
+const updateUser = async (user, email, reserve, newReserve) => {
+    const userDB = await db.collection('users').where('email', '==', email).get()
+    const userID = userDB.docs[0].id
+    let newInfo;
+    if (reserve.active[0] == null) {
+        console.log('alla');
+        newInfo = {
+            "reserves.active": [{
+                name: newReserve.name,
+                entryDate: newReserve.entryDate,
+                leaveDate: newReserve.leaveDate,
+                roomType: newReserve.roomType,
+                price: newReserve.price,
+                rating: newReserve.rating
+            }]
+        }
+    } else {
+        console.log('aqui');
+        newInfo = {
+            "reserves.active": [...reserve.active, newReserve]
+        }
+    }
+    console.log(newInfo);
+    console.log(userID);
+    await db.collection('users').doc(userID).update(newInfo)
 }
 
-export { pushUser, getUser };
+export { pushUser, getUser, updateUser };

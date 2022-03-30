@@ -1,0 +1,14 @@
+.Reserve-Card-container {
+    border: 0.1rem solid var(--mid-dark-blue);
+    border-radius: 1rem;
+    padding: 2rem;
+    width: fit-content;
+    margin-bottom: 2rem;
+}
+
+.Reserves .Reserve-Card-container p {
+    font-size: 1.8rem;
+}
+.Reserve-Card-container p:last-child {
+    margin-bottom: 0;
+}
