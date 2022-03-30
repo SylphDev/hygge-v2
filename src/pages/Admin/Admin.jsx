@@ -5,12 +5,14 @@ import HotelCard from "../../components/Search/HotelCard/HotelCard";
 import CityCard from "../../components/Search/CityDetails/CityDetails";
 import { Modal } from "../../components/App/Modal/Modal";
 import { SecureDelete } from "../../components/App/secureDelete/secureDelete";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setCitysAction, setHutsAction } from "../../redux/actions/actions";
 import { CityForm } from "../../components/App/CityForm/CityForm";
 import { HutForm } from "../../components/App/HutForm/HutForm";
 
 const Admin = () => {
+  const cityState = useSelector((state) => state.citys);
+  const hutState = useSelector((state) => state.huts);
   const dispatch = useDispatch();
   const [cities, setCities] = useState([]);
   const [huts, setHuts] = useState([]);
@@ -53,14 +55,13 @@ const Admin = () => {
   };
 
   const handleModalDeleteHut = (name) => {
-    setIsOpenDeleteHut(true);
     dispatch(setHutsAction({ name: name }));
+    setIsOpenDeleteHut(true);
   };
 
   const handleModalDeleteCity = (name) => {
+    dispatch(setCitysAction({ name: name }))
     setIsOpenDeleteCity(true);
-    //Esto puede estar malo perfectamente
-    dispatch(setCitysAction({ name: name }));
   };
 
   const handleModalCreateCity = () => {
@@ -158,7 +159,16 @@ const Admin = () => {
                 <SecureDelete
                   deleteHut={(prueba) => deleteHut(prueba)}
                   onClose={() => setIsOpenDeleteHut(false)}
-                  hutName={hut.name}
+                  type={hutState}
+                />
+              </Modal>
+            ) : null}
+            {isOpenDeleteCity ? (
+              <Modal>
+                <SecureDelete
+                  deleteHut={(prueba) => deleteCity(prueba)}
+                  onClose={() => setIsOpenDeleteCity(false)}
+                  type={cityState}
                 />
               </Modal>
             ) : null}

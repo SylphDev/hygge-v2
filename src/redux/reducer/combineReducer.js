@@ -6,7 +6,7 @@ import viewReducer from "./viewReducer";
 import citysReducer from "./citysReducer";
 
 const reducer = combineReducers({
-  city: citysReducer,
+  citys: citysReducer,
   user: userReducer,
   view: viewReducer,
   reserve: reserveReducer,
