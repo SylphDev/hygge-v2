@@ -7,7 +7,7 @@ import "./HyggeDescription.css";
 const HyggeDescription = () => {
   return (
     <div className="Hygge-description">
-      <p>En Hygge podrás encontrar:</p>
+      <p className="title">En Hygge podrás encontrar:</p>
       <div className="Hygge-description-element">
         <figure className="Icon">
           <img src={hutIcon} alt="Hut icon" />

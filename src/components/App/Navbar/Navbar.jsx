@@ -2,18 +2,51 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
-import { setUserAction, setViewAction } from "../../../redux/actions/actions";
+import { setHutsAction, setReserveAction, setUserAction, setViewAction } from "../../../redux/actions/actions";
+import { auth } from "../../../firebase/firebaseConfig";
 
 const Navbar = () => {
+  const signOut = async () => {
+    await auth.signOut();
+  };
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
-  const logOut = () => {
+  const logOut = async () => {
     dispatch(
       setUserAction({
         name: null,
+        lastName: null,
+        email: null,
+        country: null,
+        city: null,
+        photoUrl: null,
+        phone: null,
+        reserves: {
+          active: [],
+          finished: [],
+        }
       })
     );
     dispatch(setViewAction("landing"));
+    dispatch(
+      setReserveAction({
+        hut: {},
+        entry: '',
+        leave: '',
+        room: '',
+        price: 0
+      })
+    );
+    dispatch(
+      setHutsAction({
+        name: "",
+        description: "",
+        photo: [],
+        rooms: [],
+        city: "",
+      })
+    );
+    signOut();
   };
 
   return (

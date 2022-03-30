@@ -21,10 +21,8 @@
 .Form-container .input:focus-visible {
     outline: none;
 }
-.Form-container a {
-    text-align: center;
-}
-.Form-container a button {
+.Form-container button {
+    align-self: center;
     width: 50%;
     margin-top: 1rem;
     height: 3rem;

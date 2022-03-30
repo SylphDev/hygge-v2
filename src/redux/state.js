@@ -3,7 +3,6 @@ const initialState = {
     name: null,
     lastName: null,
     email: null,
-    password: null,
     country: null,
     city: null,
     photoUrl: null,
@@ -12,10 +11,30 @@ const initialState = {
       active: [],
       finished: [],
     },
+    admin: false,
+    uid: ''
   },
   view: "landing",
-  citys: [],
-  huts: [],
+  reserve: {
+    hut: {},
+    entry: '',
+    leave: '',
+    room: '',
+    price: 0,
+    rate: false,
+  },
+  huts:
+  {
+    name: "",
+    description: "",
+    photo: [],
+    rooms: [],
+    city: "",
+  },
+  error: {
+    state: false,
+    message: ''
+  }
 };
 
 export { initialState };

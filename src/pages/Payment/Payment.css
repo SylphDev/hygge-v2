@@ -1,0 +1,49 @@
+.Payment-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.Payment-container .Payment-logo {
+    height: calc(100vh - 10rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--mid-dark-blue);
+}
+.Payment-container .Payment-logo img {
+    height: 80%;
+    margin-right: 6%;
+}
+.Payment-container .Payment-reserve-info {
+    min-width: 36rem;
+    margin-left: 3rem;
+}
+.Payment-container .Payment-reserve-info h3 {
+    margin-bottom: 2rem;
+}
+.Payment-container .Payment-reserve-info p {
+    margin-bottom: 1rem;
+}
+.Payment-container .Payment-reserve-info .Payment-resume {
+    margin-bottom: 4rem;
+}
+
+@media (max-width:800px) {
+    .Payment-container {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .Payment-container .Payment-logo {
+        order: 2;
+        max-width: 35rem;
+        height: auto;
+    }
+    .Payment-container .Payment-logo img {
+        max-width: 100%;
+    }
+    .Payment-container .Payment-reserve-info {
+        order: 1;
+        margin: 3rem 0;
+    }
+}

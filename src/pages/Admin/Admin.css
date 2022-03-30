@@ -1,0 +1,56 @@
+.admin-page-container {
+    text-align: center;
+    margin-top: 2rem;
+    height: calc(100vh - 11rem);
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .admin-page-container .Posadas {
+    width: 41%;
+    padding: 0 2rem;
+    overflow-y: scroll;
+  }
+  .admin-page-container .Ciudades {
+    width: 41%;
+    overflow-y: scroll;
+  }
+
+  .Icon {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+    width: 48px;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 1rem;
+    border: 1px solid black;
+    border-radius: 5px;
+    /* background-color: #CCC; */
+  }
+
+
+@media (max-width: 1000px) {
+    .admin-page-container {
+      justify-content: space-evenly;
+    }
+    .admin-page-container .Ciudades {
+      display: none;
+    }
+    .admin-page-container .Posadas {
+      width: 70%;
+    }
+  }
+  
+  @media (max-width: 700px) {
+    .admin-page-container {
+      flex-direction: column;
+      height: fit-content;
+    }
+    .admin-page-container .Posadas {
+      width: 100%;
+    }
+}

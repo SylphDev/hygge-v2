@@ -9,6 +9,8 @@
     "firebase": "^7.22.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-hook-form": "^7.28.0",
+    "react-paypal-button-v2": "^2.6.3",
     "react-player": "^2.9.0",
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.2.1",
