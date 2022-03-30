@@ -1,9 +1,12 @@
 import React from "react";
+import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import greyImage from "../../assets/images/grey.jpeg";
+import { ReserveCards } from "../../components/App/ReserveCards/ReserveCards";
 import "./Profile.css";
 
 const Profile = () => {
+  const { register, handleSubmit } = useForm();
   const user = useSelector((state) => state.user);
   const editProfile = () => {
     const inputs = document.getElementsByClassName("input");
@@ -25,7 +28,7 @@ const Profile = () => {
       <div className="Profile-info">
         <p>Tu perfil</p>
         <figure className="Profile-picture">
-          <img src={greyImage} alt="Profile" />
+          <img src={user.photoUrl != null ? user.photoUrl : greyImage} alt="Profile" />
         </figure>
       </div>
       <form className="Profile-form">
@@ -81,6 +84,16 @@ const Profile = () => {
       <button onClick={editProfile} id="edit-button" type="button">
         Editar perfil
       </button>
+      {user.reserves.active[0] != null ?
+        <div className="Reserves">
+          <p className="Reserves-title">Reservas</p>
+          <div className="Reserve-cards">
+            {user.reserves.active.map(reserve => (
+              <ReserveCards key={reserve.price} reservation={reserve} />
+            ))}
+          </div>
+        </div>
+        : null}
     </div>
   );
 };

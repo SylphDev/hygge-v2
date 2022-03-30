@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setErrorAction, setUserAction, setViewAction } from "../../../redux/actions/actions";
 import { auth, db } from "../../../firebase/firebaseConfig";
+import { pushUser, getUser } from "../../../utils/pushToDB";
 import "./Form.css";
 
 const Form = ({ view }) => {
@@ -31,6 +32,7 @@ const Form = ({ view }) => {
         }
         dispatch(setUserAction(user));
         dispatch(setViewAction('search'));
+        pushUser(user);
         navigate('/search');
       } catch (e) {
         dispatch(setErrorAction({
@@ -41,10 +43,10 @@ const Form = ({ view }) => {
     } else {
       try {
         const response = await auth.signInWithEmailAndPassword(data.email, data.password);
-        console.log(response);
-        //     // dispatch(setUserAction({ email: data.email }));
-        //     // dispatch(setViewAction('search'));
-        //     navigate('/search');
+        const user = await getUser(response.user.email)
+        dispatch(setUserAction(user));
+        dispatch(setViewAction('search'));
+        navigate('/search');
       } catch (e) {
         dispatch(setErrorAction({
           state: true,

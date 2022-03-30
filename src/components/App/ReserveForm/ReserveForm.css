@@ -48,6 +48,14 @@ label {
     margin-bottom: 1.5rem;
     text-align: start;
 }
+.ReserveForm-container .ReserveForm-form .Reserve-form-room select {
+    width: 20rem;
+    height: 2.5rem;
+    border-radius: 1rem;
+    border: 0.2rem solid var(--mid-dark-blue);
+    padding-left: 1rem;
+    color: var(--mid-dark-blue);
+}
 .ReserveForm-container .ReserveForm-form .Reserve-form-cost {
     display: flex;
 }

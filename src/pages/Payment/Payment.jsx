@@ -4,21 +4,25 @@ import logo from "../../assets/logos/logo-small-white.png";
 import { PayPalButton } from "react-paypal-button-v2";
 import "./Payment.css";
 import { useDispatch, useSelector } from "react-redux";
-import { setErrorAction } from "../../redux/actions/actions";
+import { addReserveAction, setErrorAction } from "../../redux/actions/actions";
 import { Modal } from "../../components/App/Modal/Modal";
 import ErrorMessage from "../../components/Landing/ErrorMessage/ErrorMessage";
+import { db } from "../../firebase/firebaseConfig";
+import { updateUser } from "../../utils/pushToDB";
 
 const Payment = () => {
-  const errorState = useSelector(state => state.error)
-  const dispatch = useDispatch()
+  const user = useSelector(state => state.user)
+  const errorState = useSelector(state => state.error);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const reservation = useSelector(state => state.reserve)
+  const reservation = useSelector(state => state.reserve);
   const reserve = {
     name: reservation.hut.name,
-    entryDate: reservation.entry,
-    leaveDate: reservation.leave,
+    entryDate: reservation.entry.toLocaleDateString(),
+    leaveDate: reservation.leave.toLocaleDateString(),
     roomType: reservation.room,
     price: reservation.price,
+    rating: reservation.rate
   };
   const paypalOptions = {
     clientId:
@@ -32,6 +36,8 @@ const Payment = () => {
   };
   const handlePaymentSuccess = (data) => {
     if (data.status === "COMPLETED") {
+      updateUser(user, user.email, user.reserves, reserve)
+      dispatch(addReserveAction(reserve))
       navigate("/payment/success");
     }
   };
