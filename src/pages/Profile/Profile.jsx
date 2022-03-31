@@ -81,9 +81,9 @@ const Profile = () => {
           disabled
         />
       </form>
-      <button onClick={editProfile} id="edit-button" type="button">
+      {/* <button onClick={editProfile} id="edit-button" type="button">
         Editar perfil
-      </button>
+      </button> */}
       {user.reserves.active[0] != null ?
         <div className="Reserves">
           <p className="Reserves-title">Reservas</p>
