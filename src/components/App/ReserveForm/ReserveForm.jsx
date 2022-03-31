@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import smallLogo from "../../../assets/logos/logo-small-black.png";
-import { setReserveAction } from "../../../redux/actions/actions";
+import { setErrorAction, setReserveAction } from "../../../redux/actions/actions";
+import { Modal } from "../Modal/Modal";
+import ErrorMessage from '../../Landing/ErrorMessage/ErrorMessage'
 import "./ReserveForm.css";
 
 const ReserveForm = ({ hut }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const errorState = useSelector(state => state.error)
   const [entryDate, setEntryDate] = useState("");
   const [leaveDate, setLeaveDate] = useState("");
   const [chosenRoom, setChosenRoom] = useState("");
@@ -41,12 +44,16 @@ const ReserveForm = ({ hut }) => {
   const calculateTotalPrice = (event) => {
     const diffInMs = (Date.parse(leaveDate) - Date.parse(entryDate));
     setRoom(chosenRoom);
-    if (entryDate && leaveDate && chosenRoom && diffInMs > 0) {
-      const differenceInDates = diffInMs / (1000 * 3600 * 24);
-      const roomPrice = chosenRoom.split("$")[1];
-      setTotalPrice(roomPrice * differenceInDates);
+    if (entryDate && leaveDate && diffInMs > 0) {
+      if (chosenRoom) {
+        const differenceInDates = diffInMs / (1000 * 3600 * 24);
+        const roomPrice = chosenRoom.split("$")[1];
+        setTotalPrice(roomPrice * differenceInDates);
+      } else {
+        dispatch(setErrorAction({ state: true, message: 'Debe seleccionar una habitacion' }))
+      }
     } else {
-      setTotalPrice(0);
+      dispatch(setErrorAction({ state: true, message: 'Las fechas ingresadas no son correctas' }))
     }
   };
 
@@ -95,7 +102,6 @@ const ReserveForm = ({ hut }) => {
             </div>
             <div className="Reserve-form-room">
               <label htmlFor="room-type">Tipo de habitacion</label>
-              {/* <input {...register("room")} id="room-type" list="rooms" onChange={getChosenRoom} /> */}
               <select id="rooms room-type" {...register("room")} list="rooms" onChange={getChosenRoom}>
                 {hut.rooms.map(room =>
                   <React.Fragment>
@@ -132,6 +138,10 @@ const ReserveForm = ({ hut }) => {
           </div>
         </form>
       </div>
+      {errorState.state &&
+        <Modal>
+          <ErrorMessage />
+        </Modal>}
     </div>
   );
 };

@@ -147,19 +147,21 @@ const Admin = () => {
               descripcion={city.about}
               urlimagen={city.photos[0]}
             />
-            <span
-              className="Icon Icon-delete"
-              id={city.name}
-              onClick={() => handleModalDeleteCity(city.name)}
-            >
-              🗑️
-            </span>
-            <span
-              className="Icon Icon-update"
-              onClick={() => handleModalUpdateCity(city.name)}
-            >
-              🔃
-            </span>
+            <div className="icons-containers">
+              <span
+                className="Icon Icon-delete"
+                id={city.name}
+                onClick={() => handleModalDeleteCity(city.name)}
+              >
+                🗑️
+              </span>
+              <span
+                className="Icon Icon-update"
+                onClick={() => handleModalUpdateCity(city.name)}
+              >
+                🔃
+              </span>
+            </div>
           </React.Fragment>
         ))}
       </div>

@@ -19,11 +19,11 @@ const ServiceButtons = ({ view }) => {
       if (userDB != null) {
         dispatch(setUserAction(userDB))
         if (userDB.admin == true) {
-          navigate('/admin')
           dispatch(setViewAction('admin'))
+          navigate('/admin')
         } else {
-          navigate('/search');
           dispatch(setViewAction('search'))
+          navigate('/search');
         }
       } else {
         const user = {
