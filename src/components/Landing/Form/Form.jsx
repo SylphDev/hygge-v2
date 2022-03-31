@@ -6,6 +6,7 @@ import { setErrorAction, setUserAction, setViewAction } from "../../../redux/act
 import { auth, db } from "../../../firebase/firebaseConfig";
 import { pushUser, getUser } from "../../../utils/pushToDB";
 import "./Form.css";
+import { validateAlpha } from "../../../utils/validateForms";
 
 const Form = ({ view }) => {
   const dispatch = useDispatch();
@@ -18,25 +19,32 @@ const Form = ({ view }) => {
           data.email,
           data.password
         );
-        const user = {
-          name: data.name,
-          lastName: data.lastName,
-          email: data.email,
-          country: data.country,
-          city: data.city,
-          photoUrl: null,
-          phone: data.phone,
-          reserves: {
-            active: [],
-            finished: [],
-          },
-          admin: false,
-          uid: response.user.uid,
-        };
-        dispatch(setUserAction(user));
-        dispatch(setViewAction('search'));
-        pushUser(user);
-        navigate('/search');
+        if (validateAlpha(data.name) && validateAlpha(data.lastName) && validateAlpha(data.country) && validateAlpha(data.city)) {
+          const user = {
+            name: data.name,
+            lastName: data.lastName,
+            email: data.email,
+            country: data.country,
+            city: data.city,
+            photoUrl: null,
+            phone: data.phone,
+            reserves: {
+              active: [],
+              finished: [],
+            },
+            admin: false,
+            uid: response.user.uid,
+          };
+          dispatch(setUserAction(user));
+          dispatch(setViewAction('search'));
+          pushUser(user);
+          navigate('/search');
+        } else {
+          dispatch(setErrorAction({
+            state: true,
+            message: 'Los datos ingresados no son correctos'
+          }))
+        }
       } catch (e) {
         dispatch(setErrorAction({
           state: true,
