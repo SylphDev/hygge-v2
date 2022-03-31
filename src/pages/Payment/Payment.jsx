@@ -15,7 +15,7 @@ const Payment = () => {
   const errorState = useSelector(state => state.error);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const reservation = useSelector(state => state.reserve);
+  const reservation = useSelector((state) => state.reserve);
   const reserve = {
     name: reservation.hut.name,
     entryDate: reservation.entry.toLocaleDateString(),

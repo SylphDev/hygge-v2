@@ -13,8 +13,8 @@ const AboutHygge = () => {
           Hygge es una plataforma online para reservar posadas en toda Venezuela
         </p>
         <p>
-          Contamos con las mejores posadas para que le den un toque aventurero a tu
-          destino
+          Contamos con las mejores posadas para que le den un toque aventurero a
+          tu destino
         </p>
         <span>
           No es necesario un hotel 5 estrellas para disfrutar de las mejores

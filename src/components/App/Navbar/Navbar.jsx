@@ -2,7 +2,12 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
-import { setHutsAction, setReserveAction, setUserAction, setViewAction } from "../../../redux/actions/actions";
+import {
+  setHutsAction,
+  setReserveAction,
+  setUserAction,
+  setViewAction,
+} from "../../../redux/actions/actions";
 import { auth } from "../../../firebase/firebaseConfig";
 
 const Navbar = () => {
@@ -24,17 +29,17 @@ const Navbar = () => {
         reserves: {
           active: [],
           finished: [],
-        }
+        },
       })
     );
     dispatch(setViewAction("landing"));
     dispatch(
       setReserveAction({
         hut: {},
-        entry: '',
-        leave: '',
-        room: '',
-        price: 0
+        entry: "",
+        leave: "",
+        room: "",
+        price: 0,
       })
     );
     dispatch(
