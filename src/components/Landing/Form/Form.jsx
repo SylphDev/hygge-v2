@@ -49,7 +49,11 @@ const Form = ({ view }) => {
         const user = await getUser(response.user.email)
         dispatch(setUserAction(user));
         dispatch(setViewAction('search'));
-        navigate('/search');
+        if (user.admin) {
+          navigate('/admin')
+        } else {
+          navigate('/search');
+        }
       } catch (e) {
         dispatch(setErrorAction({
           state: true,

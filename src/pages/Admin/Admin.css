@@ -82,6 +82,9 @@
     transform: rotate(0);
     transition: .3s ease;
   }
+  .cities-title {
+    margin-bottom: 3rem;
+  }
 
   .add-city-button:hover{
     transform: rotate(224deg);

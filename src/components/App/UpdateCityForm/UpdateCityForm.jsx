@@ -1,18 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { db } from "../../../firebase/firebaseConfig";
 
-const UpdateCityForm = ({ type }) => {
+const UpdateCityForm = ({ type, onClose }) => {
   const { register, handleSubmit } = useForm();
   const cityName = type.name;
-  let cityAbout;
+  const [cityAbout, setCityAbout] = useState('')
 
-  db.collection("cities")
-    .where("name", "==", cityName)
-    .get()
-    .then((response) => {
-      cityAbout = response.docs[0].data().about;
-    });
+  useEffect(() => {
+    db.collection("cities")
+      .where("name", "==", cityName)
+      .get()
+      .then((response) => {
+        setCityAbout(response.docs[0].data().about);
+      });
+  }, [])
 
   const updateCity = async (data) => {
     console.log(data);
@@ -25,6 +27,7 @@ const UpdateCityForm = ({ type }) => {
       .collection("cities")
       .doc(docID)
       .update({ name: data.name, about: data.about });
+    onClose()
   };
 
   return (

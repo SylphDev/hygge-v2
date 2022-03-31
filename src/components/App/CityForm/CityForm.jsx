@@ -1,7 +1,8 @@
 import { useForm } from "react-hook-form";
 import { db } from "../../../firebase/firebaseConfig";
+import './CityForm.css'
 
-const CityForm = () => {
+const CityForm = ({ close }) => {
   const { register, handleSubmit } = useForm();
 
   const createNewCity = async (data) => {
@@ -31,7 +32,7 @@ const CityForm = () => {
             id="city-image"
             accept="image/*"
           />
-          <button type="submit">Crear</button>
+          <button type="submit" onClick={close}>Crear</button>
         </form>
       </div>
     </div>

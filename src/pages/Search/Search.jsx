@@ -119,7 +119,7 @@ const Search = () => {
             />
           ))}
         </div>
-      ) : null}
+        : null}
 
       {initCity !== "" ? (
         <div className="Ciudades">

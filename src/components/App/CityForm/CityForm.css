@@ -1,0 +1,21 @@
+.city-form-container {
+    padding: 3rem;
+    background-color: var(--white);
+    border-radius: 1rem;
+    color: black;
+}
+.city-form-container .city-form-info form label:nth-child(3){
+    margin-left: 2rem;
+}
+.city-form-container .city-form-info form button {
+    padding: 0.5rem 1rem;
+    margin-left: 0.5rem;
+    border-radius: 0.5rem;
+    border: 0.1rem solid var(--dark-blue);
+    color: var(--dark-blue);
+    cursor: pointer;
+}
+.city-form-container .city-form-info form button:hover {
+    background-color: var(--dark-blue);
+    color: var(--white);
+}

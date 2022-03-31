@@ -130,13 +130,13 @@ const Admin = () => {
   return (
     <div className="admin-page-container">
       <div className="Ciudades">
-        <h1 className="cities-title">Ciudades</h1>
         <button className="add-city-button" onClick={handleModalCreateCity}>
           +
         </button>
+        <h1 className="cities-title">Ciudades</h1>
         {isOpenCreateCity ? (
           <Modal>
-            <CityForm />
+            <CityForm close={() => setIsOpenCreateCity(true)} />
           </Modal>
         ) : null}
         {cities.map((city) => (
@@ -164,10 +164,10 @@ const Admin = () => {
         ))}
       </div>
       <div className="Posadas">
-        <h1 className="huts-title">Posadas</h1>
         <button className="add-hut-button" onClick={handleModalCreateHut}>
           +
         </button>
+        <h1 className="huts-title">Posadas</h1>
         {isOpenCreateHut ? (
           <Modal>
             <HutForm />
@@ -216,12 +216,12 @@ const Admin = () => {
             ) : null}
             {isOpenUpdateHut ? (
               <Modal>
-                <UpdateHutForm type={hutState} />
+                <UpdateHutForm onClose={() => setIsOpenUpdateHut(false)} type={hutState} />
               </Modal>
             ) : null}
             {isOpenUpdateCity ? (
               <Modal>
-                <UpdateCityForm type={cityState} />
+                <UpdateCityForm onClose={() => setIsOpenUpdateCity(false)} type={cityState} />
               </Modal>
             ) : null}
           </React.Fragment>

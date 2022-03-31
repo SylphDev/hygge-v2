@@ -18,6 +18,13 @@ const ServiceButtons = ({ view }) => {
       const userDB = await getUser(response.user.email)
       if (userDB != null) {
         dispatch(setUserAction(userDB))
+        if (userDB.admin == true) {
+          navigate('/admin')
+          dispatch(setViewAction('admin'))
+        } else {
+          navigate('/search');
+          dispatch(setViewAction('search'))
+        }
       } else {
         const user = {
           name: response.user.displayName,
@@ -36,9 +43,9 @@ const ServiceButtons = ({ view }) => {
         }
         dispatch(setUserAction(user))
         pushUser(user)
+        dispatch(setViewAction('search'))
+        navigate('/search')
       }
-      dispatch(setViewAction('search'))
-      navigate('/search')
     } catch (e) {
       console.log(e)
       dispatch(setErrorAction({
@@ -47,10 +54,10 @@ const ServiceButtons = ({ view }) => {
       }))
     }
   }
-  const handleLoginFacebook = async () => {
-    const response = await auth.signInWithPopup(faceBookProvider);
-    console.log(response);
-  }
+  // const handleLoginFacebook = async () => {
+  //   const response = await auth.signInWithPopup(faceBookProvider);
+  //   console.log(response);
+  // }
   return (
     <div className="ServiceButtons-container">
       <div onClick={handleLoginGoogle} className="Google-button">

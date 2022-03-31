@@ -1,0 +1,40 @@
+.hut-form-container {
+    padding: 3rem;
+    background-color: var(--white);
+    color: black;
+    border-radius: 1rem;
+}
+.hut-form-container .hut-form-info .hut-form {
+    display: flex;
+    flex-direction: column;
+}
+.hut-form-container .hut-form-info .hut-form .hut-form-input-container {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+.hut-form-container .hut-form-info .hut-form .hut-form-input-container input {
+    width: 70%;
+}
+.hut-form-container .hut-form-info .hut-form .hut-form-rooms-container h3 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+.hut-form-container .hut-form-info .hut-form .hut-form-rooms-container .hut-form-rooms-input {
+    margin-bottom: 1rem;
+}
+.hut-form-container .hut-form-info .hut-form .hut-form-rooms-container .hut-form-rooms-input label:nth-child(3) {
+    margin-left: 0.5rem;
+}
+.hut-form-container .hut-form-info .hut-form button {
+    padding: 0.5rem 1rem;
+    color: var(--dark-blue);
+    border-radius: 0.5rem;
+    border: 0.1rem solid var(--dark-blue);
+    cursor: pointer;
+    align-self: center;
+}
+.hut-form-container .hut-form-info .hut-form button:hover {
+    color: var(--white);
+    background-color: var(--dark-blue);
+}
