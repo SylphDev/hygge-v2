@@ -21,7 +21,7 @@ const Login = () => {
         <ServiceButtons view={"login"} />
         <Form view={"login"} />
         <p className="Login-remember-password">
-          Olvidaste tu contraseña? Has click aquí
+          Olvidaste tu contraseña? Haz click aquí
         </p>
       </div>
       {errorState.state &&

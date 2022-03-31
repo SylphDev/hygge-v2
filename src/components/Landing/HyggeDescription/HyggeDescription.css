@@ -24,6 +24,8 @@
     width: 5rem;
     height: 5rem;
     margin-right: 2rem;
+    border: none;
+    cursor: inherit;
 }
 .Hygge-description .Hygge-description-element .Icon img {
     width: 5rem;
